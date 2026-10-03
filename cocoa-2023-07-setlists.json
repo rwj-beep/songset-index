@@ -1,0 +1,71 @@
+{
+  "performer": "道明寺ここあ",
+  "month": "2023-07",
+  "setlists": [
+    {
+      "setlist": {
+        "id": "seed-cocoa-2023-07-04-singing-stream",
+        "performer": "道明寺ここあ",
+        "title": "【歌枠】今月もよろしくお願いしますの歌枠！😎 初見さん大歓迎‼.🎀",
+        "videoUrl": "https://www.youtube.com/watch?v=a1OniqmMLKA",
+        "streamDate": "2023-07-04",
+        "sourceCommentUrl": "https://www.youtube.com/watch?v=a1OniqmMLKA&lc=UgxIiIKo0BibtzbqpYJ4AaABAg"
+      },
+      "songs": [
+        { "title": "美しい鰭", "artist": "スピッツ", "startSeconds": 565, "endSeconds": 771 },
+        { "title": "気まぐれロマンティック", "artist": "いきものがかり", "startSeconds": 1209, "endSeconds": 1451 },
+        { "title": "ninelie", "artist": "Aimer", "startSeconds": 1736, "endSeconds": 1998 },
+        { "title": "LAST STARDUST", "artist": "Aimer", "startSeconds": 2345, "endSeconds": 2662 },
+        { "title": "M八七", "artist": "米津玄師", "startSeconds": 2932, "endSeconds": 3193 },
+        { "title": "シャッター", "artist": "優里", "startSeconds": 3404, "endSeconds": 3652 },
+        { "title": "Anything Goes!", "artist": "大黒摩季", "startSeconds": 3852, "endSeconds": 4063 },
+        { "title": "Be The One", "artist": "PANDORA feat. Beverly", "startSeconds": 4318, "endSeconds": 4528 },
+        { "title": "マザーランド", "artist": "Ado", "startSeconds": 4735, "endSeconds": 4984 },
+        { "title": "愛をこめて花束を", "artist": "Superfly", "startSeconds": 5236, "endSeconds": 5528 }
+      ]
+    },
+    {
+      "setlist": {
+        "id": "seed-cocoa-2023-07-06-singing-stream",
+        "performer": "道明寺ここあ",
+        "title": "【歌枠】七夕前夜祭？🎋夜空とか星とかに関する曲縛りで歌う！ 初見さん大歓迎‼🌌",
+        "videoUrl": "https://www.youtube.com/watch?v=5OS8HWbrJBM",
+        "streamDate": "2023-07-06",
+        "sourceCommentUrl": "https://www.youtube.com/watch?v=5OS8HWbrJBM&lc=UgzN-Co6R_sbsD7NdAF4AaABAg"
+      },
+      "songs": [
+        { "title": "三日月", "artist": "絢香", "startSeconds": 373, "endSeconds": 651 },
+        { "title": "ベテルギウス", "artist": "優里", "startSeconds": 854, "endSeconds": 1095 },
+        { "title": "オリオンをなぞる", "artist": "UNISON SQUARE GARDEN", "startSeconds": 1271, "endSeconds": 1532 },
+        { "title": "花火", "artist": "aiko", "startSeconds": 2112, "endSeconds": 2388 },
+        { "title": "スターライトパレード", "artist": "SEKAI NO OWARI", "startSeconds": 2810, "endSeconds": 3149 },
+        { "title": "StarRingChild", "artist": "Aimer", "startSeconds": 3423, "endSeconds": 3749 },
+        { "title": "星のかけらを探しに行こう", "artist": "福耳", "startSeconds": 4054, "endSeconds": 4415 },
+        { "title": "星が降るユメ", "artist": "藍井エイル", "startSeconds": 4590, "endSeconds": 4839 },
+        { "title": "星月夜", "artist": "由薫", "startSeconds": 5020, "endSeconds": 5287 }
+      ]
+    },
+    {
+      "setlist": {
+        "id": "seed-cocoa-2023-07-08-anisong-singing-stream",
+        "performer": "道明寺ここあ",
+        "title": "【歌枠】めっちゃ久しぶりのアニソン縛り歌枠！ 初見さん大歓迎‼💕",
+        "videoUrl": "https://www.youtube.com/watch?v=oE-jbbbEFzE",
+        "streamDate": "2023-07-08",
+        "sourceCommentUrl": "https://www.youtube.com/watch?v=oE-jbbbEFzE&lc=UgxvG8Fz9I-yThKuLiZ4AaABAg"
+      },
+      "songs": [
+        { "title": "残酷な天使のテーゼ", "artist": "高橋洋子", "startSeconds": 332, "endSeconds": 599 },
+        { "title": "創聖のアクエリオン", "artist": "AKINO", "startSeconds": 799, "endSeconds": 1079 },
+        { "title": "LEVEL5 - judgelight -", "artist": "fripSide", "startSeconds": 1437, "endSeconds": 1697 },
+        { "title": "W●RK", "artist": "millennium parade × 椎名林檎", "startSeconds": 1902, "endSeconds": 2105 },
+        { "title": "炎", "artist": "LiSA", "startSeconds": 2351, "endSeconds": 2625 },
+        { "title": "アイドル", "artist": "YOASOBI", "startSeconds": 2821, "endSeconds": 3043 },
+        { "title": "斜陽", "artist": "ヨルシカ", "startSeconds": 3153, "endSeconds": 3358 },
+        { "title": "RE:I AM", "artist": "Aimer", "startSeconds": 3470, "endSeconds": 3818 },
+        { "title": "世界が終るまでは…", "artist": "WANDS", "startSeconds": 3986, "endSeconds": 4300 },
+        { "title": "Hacking to the Gate", "artist": "いとうかなこ", "startSeconds": 4495, "endSeconds": 4747 }
+      ]
+    }
+  ]
+}
