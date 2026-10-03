@@ -262,7 +262,7 @@ function showPlayer(track){
   playerCard.hidden=false;
   $("nowTitle").textContent=track.title;
   $("nowSubtitle").textContent=track.performer+" · 原唱 "+track.artist+" · "+track.streamDate+" · "+track.streamTitle;
-  $("playerStatus").textContent="正在播放";
+  $("playerStatus").textContent="正在載入";
   $("sourceLink").href=track.sourceCommentUrl;
   $("queueCount").textContent=(queueIndex+1)+" / "+queue.length+" 首";
   $("elapsed").textContent=fmt(track.startSeconds);
@@ -324,7 +324,7 @@ $("mobileSearchInput").addEventListener("input",function(){search.value=this.val
 $("mobilePerformerInput").addEventListener("input",function(){performer.value=this.value;render();});
 $("mobileArtistInput").addEventListener("input",function(){artist.value=this.value;render();});
 $("mobileMonthSelect").addEventListener("change",function(){month.value=this.value;stream.value="";render();});
-$("pauseButton").addEventListener("click",function(){if(!playerReady||!player)return;if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();this.textContent="繼續";$("playerStatus").textContent="已暫停";}else{player.playVideo();this.textContent="暫停";$("playerStatus").textContent="正在播放";}});
+$("pauseButton").addEventListener("click",function(){if(!playerReady||!player)return;if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();this.textContent="繼續";this.setAttribute("aria-label","繼續播放");$("playerStatus").textContent="已暫停";}else{player.playVideo();this.textContent="暫停";this.setAttribute("aria-label","暫停播放");$("playerStatus").textContent="正在載入";}});
 $("nextButton").addEventListener("click",advance);
 $("previousButton").addEventListener("click",previous);
 $("shuffleToggle").addEventListener("click",function(){
@@ -342,23 +342,28 @@ function updateProgress(){
   try{
     const now=player.getCurrentTime(),rel=Math.max(0,Math.min(currentTrack.endSeconds-currentTrack.startSeconds,now-currentTrack.startSeconds));
     $("progress").value=rel;$("elapsed").textContent=fmt(now);
-    $("pauseButton").textContent=player.getPlayerState()===YT.PlayerState.PLAYING?"暫停":"繼續";
+    const playing=player.getPlayerState()===YT.PlayerState.PLAYING;
+    $("pauseButton").textContent=playing?"暫停":"繼續";
+    $("pauseButton").setAttribute("aria-label",playing?"暫停播放":"繼續播放");
     if(player.getPlayerState()===YT.PlayerState.PLAYING&&now>=currentTrack.endSeconds-0.4&&!advancing)advance();
   }catch(e){}
 }
 function onPlayerStateChange(event){
   if(!window.YT)return;
-  if(event.data===YT.PlayerState.PLAYING){$("playerStatus").textContent="正在播放";$("pauseButton").textContent="暫停";}
+  if(event.data===YT.PlayerState.PLAYING){$("playerStatus").textContent="正在播放";$("pauseButton").textContent="暫停";$("pauseButton").setAttribute("aria-label","暫停播放");}
   if(event.data===YT.PlayerState.ENDED&&!advancing)advance();
-  if(event.data===YT.PlayerState.PAUSED){$("playerStatus").textContent="已暫停";}
+  if(event.data===YT.PlayerState.PAUSED){$("playerStatus").textContent="已暫停";$("pauseButton").textContent="繼續";$("pauseButton").setAttribute("aria-label","繼續播放");}
+  if(event.data===YT.PlayerState.BUFFERING){$("playerStatus").textContent="正在載入";}
 }
 const api=document.createElement("script");api.src="https://www.youtube.com/iframe_api";api.async=true;document.head.appendChild(api);
 window.onYouTubeIframeAPIReady=function(){
-  player=new YT.Player("ytPlayer",{width:"300",height:"169",playerVars:{autoplay:1,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
-    onReady:function(){playerReady=true;$("playerStatus").textContent="播放器已準備";if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
+  const first=allTracks.find(function(t){return t.videoId;});
+  if(!first)return;
+  player=new YT.Player("ytPlayer",{width:"300",height:"169",videoId:first.videoId,playerVars:{autoplay:0,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
+    onReady:function(){playerReady=true;if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
     onStateChange:onPlayerStateChange,
     onError:function(e){$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");},
-    onAutoplayBlocked:function(){$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="在播放器內播放";showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
+    onAutoplayBlocked:function(){$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="播放";$("pauseButton").setAttribute("aria-label","播放");showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
   }});
 };
 window.setInterval(updateProgress,350);
