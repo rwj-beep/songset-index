@@ -275,7 +275,7 @@ function loadCurrent(){
   if(queueIndex<0||queueIndex>=queue.length){finishQueue();return;}
   currentTrack=queue[queueIndex];
   showPlayer(currentTrack);
-  if(playerReady){advancing=true;player.loadVideoById({videoId:currentTrack.videoId,startSeconds:currentTrack.startSeconds,endSeconds:currentTrack.endSeconds});setTimeout(function(){advancing=false;},1200);}
+  if(playerReady){advancing=true;player.loadVideoById({videoId:currentTrack.videoId,startSeconds:currentTrack.startSeconds,endSeconds:currentTrack.endSeconds});player.playVideo();setTimeout(function(){advancing=false;},1200);}
   else{pendingTrack=currentTrack;$("playerStatus").textContent="正在連接播放器";}
 }
 function finishQueue(){
@@ -354,12 +354,11 @@ function onPlayerStateChange(event){
 }
 const api=document.createElement("script");api.src="https://www.youtube.com/iframe_api";api.async=true;document.head.appendChild(api);
 window.onYouTubeIframeAPIReady=function(){
-  const first=allTracks.find(function(t){return t.videoId;});
-  if(!first)return;
-  player=new YT.Player("ytPlayer",{width:"300",height:"169",videoId:first.videoId,playerVars:{autoplay:0,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
+  player=new YT.Player("ytPlayer",{width:"300",height:"169",playerVars:{autoplay:1,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
     onReady:function(){playerReady=true;$("playerStatus").textContent="播放器已準備";if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
     onStateChange:onPlayerStateChange,
-    onError:function(e){$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");}
+    onError:function(e){$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");},
+    onAutoplayBlocked:function(){$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="在播放器內播放";showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
   }});
 };
 window.setInterval(updateProgress,350);
