@@ -725,25 +725,7 @@ $("mobileMonthSelect").addEventListener("change",function(){month.value=this.val
 $("mobileStreamSelect").addEventListener("change",function(){stream.value=this.value;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 $("clearFilters").addEventListener("click",function(){search.value="";performer.value="";artist.value="";month.value="";stream.value="";$('mobileSearchInput').value="";$('mobilePerformerInput').value="";$('mobileArtistInput').value="";$('mobileMonthSelect').value="";$('mobileStreamSelect').value="";pageSize=100;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 window.addEventListener("popstate",function(event){restoreFilterHistory(event.state);});
-let handledSideButton=0,sideButtonResetTimer=null;
-function clearHandledSideButton(){handledSideButton=0;if(sideButtonResetTimer){clearTimeout(sideButtonResetTimer);sideButtonResetTimer=null;}}
-function handleSideButton(event){
-  if(!event.isTrusted||(event.button!==3&&event.button!==4))return;
-  event.preventDefault();
-  event.stopPropagation();
-  event.stopImmediatePropagation();
-  if(handledSideButton===0){
-    handledSideButton=event.button;
-    if(event.button===3)history.back();else history.forward();
-  }
-  if(handledSideButton!==event.button)return;
-  if(event.type==="auxclick"){clearHandledSideButton();return;}
-  if(event.type==="mouseup"||event.type==="pointerup"){
-    if(sideButtonResetTimer)clearTimeout(sideButtonResetTimer);
-    sideButtonResetTimer=setTimeout(clearHandledSideButton,150);
-  }
-}
-["pointerdown","mousedown","pointerup","mouseup","auxclick"].forEach(function(type){window.addEventListener(type,handleSideButton,true);});
+
 $("pauseButton").addEventListener("click",function(){
   if(!playerReady||!player)return;
   if(!currentTrack){if(baseQueue.length)startQueue(baseQueue,baseQueue[0].key,shuffleOn);return;}
