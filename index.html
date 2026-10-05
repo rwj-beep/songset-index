@@ -534,6 +534,7 @@ function makeTrackRow(t,index){
   const stack=document.createElement("div");stack.className="title-stack";
   const title=createButton(t.title,"title-button",function(){playDirect(t);});
   const titleLine=document.createElement("div");titleLine.className="track-title-line";
+  titleLine.appendChild(title);
   const num=titleCounts.get(normalize(t.title))||1;
   stack.appendChild(titleLine);
   if(num>1){const versions=createButton(num+" 個版本","version-link",function(){filterByTitle(t.title);showToast("顯示〈"+t.title+"〉的 "+num+" 個演唱版本");});stack.appendChild(versions);}
