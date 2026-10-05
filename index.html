@@ -148,8 +148,8 @@ h1{font-size:clamp(28px,2.6vw,38px)}
 .player-card{position:fixed;z-index:20;left:0;right:0;bottom:0;width:100%;display:grid;grid-template-columns:minmax(250px,.85fr) minmax(460px,1.4fr);grid-template-rows:minmax(84px,auto) 23px;align-items:center;gap:3px 18px;padding:8px clamp(18px,3vw,48px) 5px;border:1px solid #ffffff20;border-bottom:0;border-radius:20px 20px 0 0;background:#11141deb;box-shadow:0 -14px 52px #0008;backdrop-filter:blur(22px)}
 .player-top{grid-column:1;grid-row:1;display:block;padding:8px 0;border:0}
 .player-top-actions{position:absolute;right:clamp(18px,3vw,48px);top:10px}
-.player-body{grid-column:2;grid-row:1;grid-template-columns:152px minmax(0,1fr);align-items:center;gap:13px;padding:0}
-.yt-frame{width:152px;height:86px;border:1px solid #ffffff1a;border-radius:12px}
+.player-body{grid-column:2;grid-row:1;grid-template-columns:minmax(200px,24vw) minmax(0,1fr);align-items:center;gap:13px;padding:0}
+.yt-frame{width:100%;min-width:200px;height:200px;border:1px solid #ffffff1a;border-radius:12px}
 .player-side{justify-content:center;gap:12px}
 .queue-count{font-size:12px}
 .player-controls{gap:8px}
@@ -157,15 +157,15 @@ h1{font-size:clamp(28px,2.6vw,38px)}
 .player-link{font-weight:700}
 .progress-wrap{grid-column:1/-1;grid-row:2;padding:0 3px 1px}
 .player-card.compact{width:100%}
-.player-card.compact .player-body{grid-template-columns:116px minmax(0,1fr)}
-.player-card.compact .yt-frame{width:116px;height:65px}
+.player-card.compact .player-body{grid-template-columns:200px minmax(0,1fr)}
+.player-card.compact .yt-frame{width:200px;height:200px}
 .player-card.compact .now-subtitle{display:none}
-body.player-open .main{padding-bottom:150px}
+body.player-open .main{padding-bottom:260px}
 body.player-open .sidebar{padding-bottom:180px}
 body.player-open .toast{bottom:140px}
 @media(max-width:1180px){.track-header,.track-row{grid-template-columns:38px minmax(210px,1.35fr) minmax(115px,.7fr) minmax(195px,1.25fr) 125px 74px;gap:9px}}
-@media(max-width:1080px){.layout{display:block}.sidebar{display:none}.main{max-width:100%;padding:24px clamp(18px,3vw,36px) 38px}.filters-mobile{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 16px}.track-header{display:none}.track-row{grid-template-columns:36px minmax(0,1fr) 118px 76px;gap:10px;min-height:80px}.index-cell{grid-column:1;grid-row:1}.title-cell{grid-column:2;grid-row:1}.performer-cell{display:none}.stream-cell{grid-column:2;grid-row:2;margin-top:-7px}.time-cell{grid-column:3;grid-row:1}.play-row{grid-column:4;grid-row:1}.player-card{grid-template-columns:minmax(210px,.8fr) minmax(380px,1.4fr);gap:3px 14px;padding-inline:20px}.player-body{grid-template-columns:138px minmax(0,1fr);gap:10px}.yt-frame{width:138px;height:78px}.player-card.compact .player-body{grid-template-columns:112px minmax(0,1fr)}.player-card.compact .yt-frame{width:112px;height:63px}body.player-open .main{padding-bottom:140px}}
-@media(max-width:680px){.topbar{height:62px;padding:0 15px}.header-stats{display:none}.main{padding:18px 12px 28px}.toolbar{display:block;padding:18px 16px;border-radius:16px}.actions{margin-top:16px}.actions .button{flex:1}.filters-mobile{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.filters-mobile .field{margin:0}.filters-mobile .field.stream-filter{grid-column:1/-1}.filters-mobile input,.filters-mobile select{padding:10px 9px;font-size:13px}.summary{align-items:flex-start;gap:7px;font-size:12px}.summary-left{display:block}.summary-left strong{display:block;font-size:14px}.summary-meta{display:grid;justify-items:end;text-align:right}.track-list{gap:7px}.track-row{grid-template-columns:27px minmax(0,1fr) 63px;gap:7px;padding:9px 7px;min-height:75px}.title-cell{grid-column:2;grid-row:1}.time-cell{display:none}.play-row{grid-column:3;grid-row:1;padding:7px 5px;min-width:0;font-size:11px}.stream-cell{grid-column:2;grid-row:2;margin-top:-13px}.index-cell{font-size:11px}.thumb{width:42px;height:42px;flex-basis:42px}.title-button{font-size:14px}.artist-button{font-size:11px}.stream-title{font-size:11px}.source-link{font-size:10px;margin-left:5px}.player-card{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 21px;gap:4px;padding:8px 11px 6px;border-radius:15px 15px 0 0}.player-top{grid-column:1;grid-row:1;display:flex;align-items:center;gap:8px;padding:0}.player-top-actions{position:static;flex-shrink:0}.player-top button{padding:5px 8px;font-size:11px}.player-kicker{font-size:10px}.now-title{font-size:13px}.now-subtitle{display:none}.player-body,.player-card.compact .player-body{grid-column:1;grid-row:2;grid-template-columns:104px minmax(0,1fr);gap:9px;padding:0}.yt-frame,.player-card.compact .yt-frame{width:104px;height:59px}.player-side{gap:6px}.queue-count{font-size:10px}.player-controls{gap:5px}.control-button{padding:6px 7px;font-size:11px}.player-link{font-size:10px}.progress-wrap{grid-column:1;grid-row:3;padding:0 1px;font-size:10px}.player-card.compact .now-subtitle{display:none}body.player-open .main{padding-bottom:148px}body.player-open .toast{bottom:142px}}
+@media(max-width:1080px){.layout{display:block}.sidebar{display:none}.main{max-width:100%;padding:24px clamp(18px,3vw,36px) 38px}.filters-mobile{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 16px}.track-header{display:none}.track-row{grid-template-columns:36px minmax(0,1fr) 118px 76px;gap:10px;min-height:80px}.index-cell{grid-column:1;grid-row:1}.title-cell{grid-column:2;grid-row:1}.performer-cell{display:none}.stream-cell{grid-column:2;grid-row:2;margin-top:-7px}.time-cell{grid-column:3;grid-row:1}.play-row{grid-column:4;grid-row:1}.player-card{grid-template-columns:minmax(210px,.8fr) minmax(380px,1.4fr);gap:3px 14px;padding-inline:20px}.player-body,.player-card.compact .player-body{grid-template-columns:200px minmax(0,1fr);gap:10px}.yt-frame,.player-card.compact .yt-frame{width:200px;height:200px}body.player-open .main{padding-bottom:260px}}
+@media(max-width:680px){.topbar{height:62px;padding:0 15px}.header-stats{display:none}.main{padding:18px 12px 28px}.toolbar{display:block;padding:18px 16px;border-radius:16px}.actions{margin-top:16px}.actions .button{flex:1}.filters-mobile{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.filters-mobile .field{margin:0}.filters-mobile .field.stream-filter{grid-column:1/-1}.filters-mobile input,.filters-mobile select{padding:10px 9px;font-size:13px}.summary{align-items:flex-start;gap:7px;font-size:12px}.summary-left{display:block}.summary-left strong{display:block;font-size:14px}.summary-meta{display:grid;justify-items:end;text-align:right}.track-list{gap:7px}.track-row{grid-template-columns:27px minmax(0,1fr) 63px;gap:7px;padding:9px 7px;min-height:75px}.title-cell{grid-column:2;grid-row:1}.time-cell{display:none}.play-row{grid-column:3;grid-row:1;padding:7px 5px;min-width:0;font-size:11px}.stream-cell{grid-column:2;grid-row:2;margin-top:-13px}.index-cell{font-size:11px}.thumb{width:42px;height:42px;flex-basis:42px}.title-button{font-size:14px}.artist-button{font-size:11px}.stream-title{font-size:11px}.source-link{font-size:10px;margin-left:5px}.player-card{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 21px;gap:4px;padding:8px 11px 6px;border-radius:15px 15px 0 0}.player-top{grid-column:1;grid-row:1;display:flex;align-items:center;gap:8px;padding:0}.player-top-actions{position:static;flex-shrink:0}.player-top button{padding:5px 8px;font-size:11px}.player-kicker{font-size:10px}.now-title{font-size:13px}.now-subtitle{display:none}.player-body,.player-card.compact .player-body{grid-column:1;grid-row:2;grid-template-columns:200px minmax(0,1fr);gap:9px;padding:0}.yt-frame,.player-card.compact .yt-frame{width:200px;height:200px}.player-side{gap:6px}.queue-count{font-size:10px}.player-controls{gap:5px}.control-button{padding:6px 7px;font-size:11px}.player-link{font-size:10px}.progress-wrap{grid-column:1;grid-row:3;padding:0 1px;font-size:10px}.player-card.compact .now-subtitle{display:none}body.player-open .main{padding-bottom:300px}body.player-open .toast{bottom:290px}}
 
 /* Stream discovery and cover art */
 .featured-stream{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.92fr);min-height:238px;margin:0 0 24px;overflow:hidden;border:1px solid #ffffff16;border-radius:20px;background:linear-gradient(115deg,#181a29,#111722 72%);box-shadow:0 16px 44px #0003}
@@ -288,7 +288,7 @@ const performers=Array.from(new Set(allTracks.map(function(t){return t.performer
 const artists=Array.from(new Set(allTracks.map(function(t){return t.artist;}))).filter(Boolean).sort(function(a,b){return a.localeCompare(b,"ja");});
 const $=function(id){return document.getElementById(id);};
 const search=$("searchInput"), performer=$("performerInput"), artist=$("artistInput"), month=$("monthSelect"), stream=$("streamSelect");
-let pageSize=100, filtered=[], queue=[], baseQueue=[], queueIndex=-1, shuffleOn=false, currentTrack=null, player=null, playerReady=false, pendingTrack=null, advancing=false, segmentReady=false, segmentTarget=0, segmentDirection="forward", loadedVideoId="", toastTimer=null;
+let pageSize=100, filtered=[], queue=[], baseQueue=[], queueIndex=-1, shuffleOn=false, currentTrack=null, player=null, playerReady=false, pendingTrack=null, advancing=false, segmentReady=false, segmentTarget=0, segmentDirection="forward", loadedVideoId="", toastTimer=null, autoplayBlocked=false;
 const playerCard=$("playerCard");
 $("headerStats").textContent=setlists.length+" 場歌回 · "+allTracks.length.toLocaleString()+" 個演唱版本";
 $("subline").textContent="共 "+performers.length+" 位演唱者，依原唱、月份與歌回場次檢索；同曲不同場次各自保留。";
@@ -430,7 +430,9 @@ function refreshCurrentTrackButton(){
   button.classList.toggle("is-playing",playing);
 }
 function showPlayer(track){
+  autoplayBlocked=false;
   playerCard.hidden=false;
+  sizeYouTubePlayer();
   document.body.classList.add("player-open");
   $("nowTitle").textContent=track.title;
   $("nowSubtitle").textContent=track.performer+" · 原唱 "+track.artist+" · "+track.streamDate+" · "+track.streamTitle;
@@ -529,7 +531,7 @@ $("pauseButton").addEventListener("click",function(){
   if(!playerReady||!player)return;
   if(!currentTrack){if(baseQueue.length)startQueue(baseQueue,baseQueue[0].key,shuffleOn);return;}
   if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();this.textContent="繼續";this.setAttribute("aria-label","繼續播放");$("playerStatus").textContent="已暫停";}
-  else{player.playVideo();this.textContent="暫停";this.setAttribute("aria-label","暫停播放");$("playerStatus").textContent="正在載入";}
+  else{autoplayBlocked=false;player.playVideo();this.textContent="暫停";this.setAttribute("aria-label","暫停播放");$("playerStatus").textContent="正在載入";}
 });
 $("nextButton").addEventListener("click",function(){advance(true);});
 $("previousButton").addEventListener("click",previous);
@@ -566,13 +568,14 @@ function onPlayerStateChange(event){
   let activeVideo="";try{activeVideo=player.getVideoData().video_id||"";}catch(e){}
   if(activeVideo&&activeVideo!==currentTrack.videoId)return;
   if(event.data===YT.PlayerState.PLAYING){
+    autoplayBlocked=false;
     let now=0;try{now=player.getCurrentTime();}catch(e){}
     if(!segmentReady&&isNearSegmentStart(now)){segmentReady=true;advancing=false;}
     $("playerStatus").textContent=segmentReady?"正在播放":"正在定位歌曲";
     $("pauseButton").textContent="暫停";$("pauseButton").setAttribute("aria-label","暫停播放");refreshCurrentTrackButton();
   }
   if(event.data===YT.PlayerState.ENDED&&segmentReady&&!advancing&&player.getPlayerState()===YT.PlayerState.ENDED)advance(false);
-  if(event.data===YT.PlayerState.PAUSED){$("playerStatus").textContent="已暫停";$("pauseButton").textContent="繼續";$("pauseButton").setAttribute("aria-label","繼續播放");}
+  if(event.data===YT.PlayerState.PAUSED){if(!autoplayBlocked){$("playerStatus").textContent="已暫停";$("pauseButton").textContent="繼續";$("pauseButton").setAttribute("aria-label","繼續播放");}}
   if(event.data===YT.PlayerState.BUFFERING){$("playerStatus").textContent="正在載入";}
 }
 let playerApiTimeout=null;
@@ -581,15 +584,21 @@ function reportPlayerUnavailable(){
   $("playerStatus").textContent="播放器連線逾時";
   showToast("YouTube 播放器連不上，請按「開啟原留言時間軸」播放");
 }
+function sizeYouTubePlayer(){
+  if(!playerReady||!player)return;
+  const frame=$("ytPlayer");
+  try{player.setSize(Math.max(200,frame.clientWidth),Math.max(200,frame.clientHeight));}catch(e){}
+}
+window.addEventListener("resize",sizeYouTubePlayer);
 function initializeYouTubePlayer(){
   if(player||!window.YT||!YT.Player)return;
   const first=allTracks.find(function(t){return t.videoId;});
   if(!first)return;
-  player=new YT.Player("ytPlayer",{width:"300",height:"169",videoId:first.videoId,playerVars:{autoplay:0,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
-    onReady:function(){playerReady=true;if(playerApiTimeout){clearTimeout(playerApiTimeout);playerApiTimeout=null;}if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
+  player=new YT.Player("ytPlayer",{width:"300",height:"200",videoId:first.videoId,playerVars:{autoplay:0,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
+    onReady:function(){playerReady=true;sizeYouTubePlayer();if(playerApiTimeout){clearTimeout(playerApiTimeout);playerApiTimeout=null;}if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
     onStateChange:onPlayerStateChange,
     onError:function(e){advancing=false;$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");},
-    onAutoplayBlocked:function(){advancing=false;$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="播放";$("pauseButton").setAttribute("aria-label","播放");showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
+    onAutoplayBlocked:function(){autoplayBlocked=true;advancing=false;$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="重試播放";$("pauseButton").setAttribute("aria-label","重試播放");showToast("瀏覽器封鎖了影片播放；請再按「重試播放」或點影片內的播放鍵");}
   }});
 }
 // Register the IFrame API callback before inserting its async script; otherwise
