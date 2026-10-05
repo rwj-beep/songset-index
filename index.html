@@ -267,18 +267,77 @@ body.player-open .toast{bottom:510px}
 @media(max-width:1120px){.player-card{height:min(440px,calc(100vh - 90px))}.player-layout{grid-template-columns:minmax(160px,.65fr) minmax(280px,1fr);gap:22px}.player-queue-panel{display:none}.player-card.queue-open .player-queue-panel{display:flex;position:absolute;z-index:2;right:16px;top:62px;bottom:16px;width:min(310px,40vw);background:#171925f5;box-shadow:0 15px 42px #0008}body.player-open .main{padding-bottom:480px}body.player-open .sidebar{padding-bottom:460px}}
 @media(max-width:680px){.track-cover{width:52px;height:52px;flex:0 0 52px}.track-row{min-height:78px}.player-card{left:0;right:0;bottom:0;transform:none;width:100%;height:min(620px,88vh);max-height:calc(100vh - 58px);border-radius:22px 22px 0 0}.player-header{height:48px;padding:0 14px}.player-header-state{gap:8px}.player-header-kicker{font-size:9px}.player-header-state #playerStatus,.player-header-state .queue-count{font-size:10px}.player-header-state .queue-count{padding-left:8px}.player-top-actions{gap:6px}.player-top-actions button{padding:6px 9px;font-size:11px}.player-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:12px;padding:12px 13px 16px;overflow-y:auto;align-content:start}.player-art-panel{display:grid;grid-template-columns:94px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;height:auto}.current-artwork{grid-column:1;grid-row:1/3;width:94px;border-radius:14px}.player-art-panel .now-meta{grid-column:2;grid-row:1;align-self:end}.player-art-panel .now-title{font-size:17px}.player-art-panel .now-subtitle{font-size:11px}.player-art-panel .player-link{grid-column:2;grid-row:2;align-self:start;font-size:10px}.player-main-panel{display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:center;gap:9px}.yt-frame{grid-column:1;grid-row:1/3;width:200px;height:200px;min-width:200px;min-height:200px;border-radius:13px}.player-main-panel .progress-wrap{grid-column:2;grid-row:1;flex-wrap:wrap;gap:5px;font-size:10px}.player-main-panel .progress-wrap input{flex-basis:100%;order:2}.player-controls{grid-column:2;grid-row:2;gap:5px}.player-controls .control-button{min-height:38px;padding:0 8px;font-size:10px}.player-controls .play-control{min-width:62px;min-height:46px;font-size:11px}.player-queue-panel{display:none;position:static;width:auto;height:auto;max-height:220px;padding:11px}.player-card.queue-open .player-queue-panel{display:flex;grid-column:1;grid-row:3}.player-card.queue-open .player-layout{overflow-y:auto}.player-card.compact{left:0;right:0;bottom:0;width:100%;height:min(540px,83vh);max-height:calc(100vh - 58px);border-radius:22px 22px 0 0}.player-card.compact .player-layout{grid-template-columns:minmax(0,1fr);gap:10px;padding:12px}.player-card.compact .player-art-panel{display:grid;grid-template-columns:80px minmax(0,1fr);height:auto}.player-card.compact .current-artwork{width:80px}.player-card.compact .player-main-panel{display:grid;grid-template-columns:200px minmax(0,1fr)}.player-card.compact .player-queue-panel{display:none}.player-card.compact.queue-open .player-queue-panel{display:flex}body.player-open .main{padding-bottom:620px}body.player-open .sidebar{padding-bottom:600px}body.player-open .toast{bottom:620px}}
 @media(max-width:680px){.player-card.queue-open .player-queue-panel,.player-card.compact.queue-open .player-queue-panel{position:static;right:auto;top:auto;bottom:auto;width:auto}}
+/* Reference the YouTube Music watch layout: full video, queue beside it, persistent transport dock. */
+.player-card{position:fixed;z-index:20;top:72px;left:max(300px,calc((100vw - 1960px)/2 + 300px));right:0;bottom:82px;transform:none;width:auto;height:auto;max-height:none;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:46px minmax(0,1fr);gap:0;padding:0;overflow:hidden;border:0;border-radius:0;background:#0f0f0f;box-shadow:none;backdrop-filter:none}
+.player-card[hidden]{display:none}
+.player-header{min-height:46px;padding:0 22px;border-bottom:1px solid #ffffff17;background:#0f0f0f}
+.player-header-state{gap:10px}
+.player-header-state #playerStatus{color:#ddd;font-size:13px}
+.player-layout{height:100%;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,34%);align-items:stretch;gap:0;padding:0;overflow:hidden;background:#0f0f0f}
+.player-art-panel{display:none}
+.player-main-panel{display:flex;min-width:0;min-height:0;align-items:center;justify-content:center;padding:24px clamp(16px,3vw,48px);background:#080808}
+.yt-frame{width:min(100%,calc((100vh - 230px)*1.7778));height:auto;min-width:0;min-height:0;aspect-ratio:16/9;margin:0;border:0;border-radius:2px;background:#000;box-shadow:none}
+.player-queue-panel{display:flex;min-width:0;height:100%;border:0;border-left:1px solid #ffffff18;border-radius:0;background:#111;padding:18px 14px 8px}
+.queue-heading{align-items:center;padding:4px 8px 13px;border-bottom:1px solid #ffffff20}
+.queue-heading>div{display:flex;align-items:center;gap:14px}
+.queue-heading h2{margin:0;font-size:15px;font-weight:650}
+.queue-heading .player-header-kicker{font-size:12px;letter-spacing:0;color:#eee}
+.queue-heading #queueRemaining{padding:5px 10px;border-radius:20px;background:#262626;color:#ddd}
+.queue-list{gap:2px;padding:10px 4px 16px 0}
+.queue-item{grid-template-columns:48px minmax(0,1fr) 22px;min-height:61px;gap:10px;padding:5px 8px;border-radius:5px}
+.queue-item.current{border-color:transparent;background:#282828}
+.queue-item:hover{background:#242424}
+.queue-cover{width:48px;height:48px;border-radius:3px}
+.queue-item-title{font-size:13px}
+.queue-item-artist{font-size:11px}
+.player-dock{position:fixed;z-index:30;left:0;right:0;bottom:0;height:82px;display:grid;grid-template-rows:14px minmax(0,1fr);background:#212121;color:#f1f1f1;border-top:1px solid #ffffff14}
+.player-dock[hidden]{display:none}
+.dock-progress{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:center;gap:12px;padding:0 16px;color:#aaa;font-size:10px;font-variant-numeric:tabular-nums}
+.dock-progress input{width:100%;height:4px;margin:0;padding:0;border:0;border-radius:0;background:#ffffff24;accent-color:#ff0033;cursor:pointer}
+.dock-content{display:grid;grid-template-columns:minmax(210px,26%) minmax(180px,1fr) minmax(210px,26%);align-items:center;gap:16px;padding:2px 16px 5px}
+.dock-transport,.dock-actions{display:flex;align-items:center;gap:11px}
+.dock-transport .control-button,.dock-actions .player-top button{min-height:36px;padding:0 10px;border:0;border-radius:18px;background:transparent;color:#eee;font-size:12px}
+.dock-transport .control-button:hover,.dock-actions .player-top button:hover{background:#ffffff15;border:0}
+.dock-transport .play-control{min-width:42px;min-height:42px;padding:0 12px;border-radius:50%;background:#f1f1f1;color:#161616;font-size:18px;box-shadow:none}
+.dock-transport .play-control:hover{background:#fff;color:#111}
+.dock-transport .shuffle-control{padding:0 8px;color:#ccc}
+.dock-transport .shuffle-control.active{background:#4be0bd;color:#08231d}
+.dock-song{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;gap:12px;min-width:0;max-width:560px;margin:auto;width:100%}
+.dock-song .current-artwork{width:48px;height:48px;aspect-ratio:1;border:0;border-radius:2px;box-shadow:none}
+.dock-song .now-meta{min-width:0}
+.dock-song .now-title{font-size:13px;line-height:1.35}
+.dock-song .now-subtitle{font-size:11px;line-height:1.3;color:#aaa}
+.dock-song .player-link{display:none}
+.dock-actions{justify-content:flex-end;gap:5px}
+.dock-actions #playerStatus{max-width:135px;overflow:hidden;color:#ddd;font-size:11px;text-overflow:ellipsis;white-space:nowrap}
+.dock-actions .queue-count{padding:0 8px;color:#aaa;font-size:11px;white-space:nowrap}
+.dock-actions .player-top-actions{gap:3px}
+.dock-actions .player-top button{padding:0 9px;font-size:11px}
+.player-card.compact{display:none}
+.player-card.queue-collapsed:not(.compact) .player-layout{grid-template-columns:minmax(0,1fr)}
+.player-card.queue-collapsed:not(.compact) .player-queue-panel{display:none}
+body.player-open .main{padding-bottom:110px}
+body.player-open .sidebar{padding-bottom:120px}
+body.player-open .toast{bottom:88px}
+.topbar{display:grid;grid-template-columns:260px minmax(260px,600px) minmax(190px,1fr);justify-content:unset}
+.top-search{width:100%;justify-self:center}
+.top-search input{height:40px;padding:0 18px;border:1px solid #303030;border-radius:22px;background:#242424;color:#f1f1f1}
+.top-search input:focus{border-color:#666;box-shadow:0 0 0 1px #666}
+.header-stats{justify-self:end;color:#aaa}
+@media(max-width:1080px){.topbar{grid-template-columns:220px minmax(0,1fr) auto;gap:12px;padding-inline:20px}.top-search{max-width:560px}.header-stats{font-size:12px}.player-card{left:0;top:72px}.player-layout{grid-template-columns:minmax(0,1fr)}.player-queue-panel{display:none}.player-card.queue-open .player-queue-panel{display:flex;position:absolute;z-index:2;inset:0 0 0 auto;width:min(420px,90vw);background:#111;box-shadow:-12px 0 38px #0009}.player-main-panel{padding:18px}.yt-frame{width:min(100%,calc((100vh - 220px)*1.7778))}.dock-content{grid-template-columns:minmax(190px,25%) minmax(180px,1fr) minmax(185px,25%);gap:10px}.dock-transport,.dock-actions{gap:5px}.dock-actions #playerStatus{display:none}}
+@media(max-width:680px){.topbar{grid-template-columns:130px minmax(0,1fr);height:62px;padding:0 12px;gap:10px}.brand{gap:8px;font-size:16px}.brand small{display:none}.brand-mark{width:30px;height:30px}.header-stats{display:none}.top-search input{height:38px;padding:0 13px;font-size:14px}.player-card{top:62px;bottom:66px;grid-template-rows:42px minmax(0,1fr)}.player-header{min-height:42px;padding:0 12px}.player-header-state .player-header-kicker{font-size:9px}.player-layout{grid-template-columns:minmax(0,1fr)}.player-main-panel{padding:10px;background:#050505}.yt-frame{width:100%;height:auto;aspect-ratio:16/9;min-width:0;min-height:0}.player-queue-panel{padding:12px 8px}.queue-heading{padding:4px 6px 10px}.queue-item{min-height:56px}.queue-cover{width:42px;height:42px}.player-dock{height:66px;grid-template-rows:12px minmax(0,1fr)}.dock-progress{grid-template-columns:32px minmax(0,1fr) 32px;gap:6px;padding:0 8px;font-size:9px}.dock-content{grid-template-columns:126px minmax(0,1fr) 75px;gap:5px;padding:2px 7px 4px}.dock-transport{gap:0}.dock-transport .control-button{min-height:30px;padding:0 5px;font-size:10px}.dock-transport .shuffle-control{display:block;width:25px;padding:0 2px}.dock-transport .play-control{min-width:34px;min-height:34px;padding:0 9px;font-size:15px}.dock-song{grid-template-columns:38px minmax(0,1fr);gap:7px}.dock-song .current-artwork{width:38px;height:38px}.dock-song .now-title{font-size:11px}.dock-song .now-subtitle{font-size:9px}.dock-actions .queue-count{display:none}.dock-actions .player-top button{padding:0 6px;font-size:10px}.player-card.queue-open .player-queue-panel{inset:0;width:100%;box-shadow:none}body.player-open .main{padding-bottom:86px}body.player-open .sidebar{padding-bottom:90px}body.player-open .toast{bottom:75px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="topbar">
   <div class="brand"><span class="brand-mark" aria-hidden="true">♫</span><span>歌回索引<small>演唱片段與版本檢索</small></span></div>
+  <div class="top-search"><input id="searchInput" type="search" aria-label="搜尋歌曲、原唱、演唱者或歌回" placeholder="搜尋歌曲、專輯、歌手"></div>
   <div class="header-stats" id="headerStats"></div>
 </header>
 <div class="layout">
   <aside class="sidebar" aria-label="曲庫篩選">
     <div class="side-title">搜尋與篩選</div>
-    <div class="field"><label for="searchInput">搜尋歌曲、原唱、演唱者或歌回</label><input id="searchInput" type="search" placeholder="例如：炎、YOASOBI、水樹奈奈"></div>
     <div class="field"><label for="performerInput">演唱者</label><input id="performerInput" list="performerOptions" placeholder="所有演唱者"><datalist id="performerOptions"></datalist></div>
     <div class="field"><label for="artistInput">原唱／作曲者</label><input id="artistInput" list="artistOptions" placeholder="所有原唱"><datalist id="artistOptions"></datalist></div>
     <div class="field"><label for="monthSelect">月份</label><select id="monthSelect"><option value="">所有月份</option></select></div>
@@ -316,24 +375,11 @@ body.player-open .toast{bottom:510px}
 </div>
 <section id="playerCard" class="player-card" hidden aria-label="正在播放">
   <header class="player-header">
-    <div class="player-header-state"><span class="player-header-kicker">NOW PLAYING</span><span class="player-status-dot" aria-hidden="true"></span><span id="playerStatus">準備中</span><span class="queue-count" id="queueCount">播放清單尚未開始</span></div>
-    <div class="player-top-actions"><button id="queueToggle" aria-expanded="true">佇列</button><button id="miniToggle" aria-label="縮小播放器">縮小</button></div>
+    <div class="player-header-state"><span class="player-header-kicker">NOW PLAYING</span></div>
   </header>
   <div class="player-layout">
-    <div class="player-art-panel">
-      <div id="currentArtwork" class="current-artwork" aria-hidden="true"></div>
-      <div class="now-meta"><div class="now-title" id="nowTitle">選擇一首歌開始播放</div><div class="now-subtitle" id="nowSubtitle"></div></div>
-      <a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a>
-    </div>
     <div class="player-main-panel">
       <div class="yt-frame" id="ytPlayer" aria-label="YouTube 影片播放器"></div>
-      <div class="progress-wrap"><span id="elapsed">0:00</span><input id="progress" type="range" min="0" max="100" value="0" aria-label="歌曲播放進度"><span id="duration">0:00</span></div>
-      <div class="player-controls">
-        <button class="control-button shuffle-control" id="shuffleToggle" aria-pressed="false" aria-label="隨機播放">隨機</button>
-        <button class="control-button" id="previousButton" aria-label="上一首">上一首</button>
-        <button class="control-button play-control" id="pauseButton" aria-label="暫停播放">暫停</button>
-        <button class="control-button" id="nextButton" aria-label="下一首">下一首</button>
-      </div>
     </div>
     <aside class="player-queue-panel" aria-label="接下來播放">
       <div class="queue-heading"><div><span class="player-header-kicker">UP NEXT</span><h2>接下來播放</h2></div><span id="queueRemaining"></span></div>
@@ -341,6 +387,22 @@ body.player-open .toast{bottom:510px}
     </aside>
   </div>
 </section>
+<footer id="playerDock" class="player-dock" hidden aria-label="播放控制列">
+  <div class="dock-progress"><span id="elapsed">0:00</span><input id="progress" type="range" min="0" max="100" value="0" aria-label="歌曲播放進度"><span id="duration">0:00</span></div>
+  <div class="dock-content">
+    <div class="dock-transport">
+      <button class="control-button shuffle-control" id="shuffleToggle" aria-pressed="false" aria-label="隨機播放" title="隨機播放">⤨</button>
+      <button class="control-button" id="previousButton" aria-label="上一首" title="上一首">◀|</button>
+      <button class="control-button play-control" id="pauseButton" aria-label="暫停播放" title="暫停播放">Ⅱ</button>
+      <button class="control-button" id="nextButton" aria-label="下一首" title="下一首">|▶</button>
+    </div>
+    <div class="dock-song">
+      <div id="currentArtwork" class="current-artwork" aria-hidden="true"></div>
+      <div class="now-meta"><div class="now-title" id="nowTitle">選擇一首歌開始播放</div><div class="now-subtitle" id="nowSubtitle"></div><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a></div>
+    </div>
+    <div class="dock-actions"><span class="player-status-dot" aria-hidden="true"></span><span id="playerStatus">準備中</span><span class="queue-count" id="queueCount">播放清單尚未開始</span><div class="player-top-actions"><button id="queueToggle" aria-expanded="true">佇列</button><button id="miniToggle" aria-label="縮小播放器">縮小</button></div></div>
+  </div>
+</footer>
 <div class="toast" id="toast" role="status"></div><script src="./catalog.js?v=2023-07-15"></script>
   <script src="./cocoa-2022-01.js?v=2022-01-14"></script>
 <script src="./cocoa-2023-07-11-15.js?v=2023-07-15"></script>
@@ -381,6 +443,7 @@ const $=function(id){return document.getElementById(id);};
 const search=$("searchInput"), performer=$("performerInput"), artist=$("artistInput"), month=$("monthSelect"), stream=$("streamSelect");
 let pageSize=100, filtered=[], queue=[], baseQueue=[], queueIndex=-1, shuffleOn=false, currentTrack=null, player=null, playerReady=false, pendingTrack=null, advancing=false, segmentReady=false, segmentTarget=0, segmentDirection="forward", loadedVideoId="", toastTimer=null, autoplayBlocked=false;
 const playerCard=$("playerCard");
+const playerDock=$("playerDock");
 $("headerStats").textContent=setlists.length+" 場歌回 · "+allTracks.length.toLocaleString()+" 個演唱版本";
 $("subline").textContent="共 "+performers.length+" 位演唱者，依原唱、月份與歌回場次檢索；同曲不同場次各自保留。";
 function fillDatalist(id,values){const dl=$(id);values.forEach(function(v){const op=document.createElement("option");op.value=v;dl.appendChild(op);});}
@@ -541,8 +604,10 @@ function refreshCurrentTrackButton(){
 }
 function showPlayer(track){
   autoplayBlocked=false;
-  playerCard.hidden=false;
-  window.requestAnimationFrame(sizeYouTubePlayer);
+  playerDock.hidden=false;
+  const compact=playerCard.classList.contains("compact");
+  playerCard.hidden=compact;
+  if(!compact)window.requestAnimationFrame(sizeYouTubePlayer);
   document.body.classList.add("player-open");
   $("nowTitle").textContent=track.title;
   $("currentArtwork").replaceChildren(makeCover(track.videoId,"player-cover",track.title+" 封面",track));
@@ -590,8 +655,9 @@ function finishQueue(){
 function startQueue(items,startKey,randomized){
   if(!items.length){showToast("目前篩選沒有歌曲");return;}
   playerCard.classList.remove("compact","queue-open","queue-collapsed");
+  playerCard.hidden=false;playerDock.hidden=false;
   $("miniToggle").textContent="縮小";$("miniToggle").setAttribute("aria-label","縮小播放器");
-  $("queueToggle").setAttribute("aria-expanded",window.matchMedia("(max-width: 1120px)").matches?"false":"true");
+  $("queueToggle").setAttribute("aria-expanded",window.matchMedia("(max-width: 1080px)").matches?"false":"true");
   baseQueue=items.slice();
   shuffleOn=!!randomized;
   queue=shuffleOn?shuffleWithFirst(baseQueue,startKey||baseQueue[0].key):baseQueue.slice();
@@ -658,9 +724,10 @@ $("shuffleToggle").addEventListener("click",function(){
   }
   setShuffleVisual();
 });
-$("miniToggle").addEventListener("click",function(){const c=playerCard.classList.toggle("compact");this.textContent=c?"放大":"縮小";this.setAttribute("aria-label",c?"放大播放器":"縮小播放器");window.requestAnimationFrame(sizeYouTubePlayer);});
+$("miniToggle").addEventListener("click",function(){const c=playerCard.classList.toggle("compact");playerCard.hidden=c;playerDock.hidden=false;this.textContent=c?"展開":"縮小";this.setAttribute("aria-label",c?"展開播放器":"縮小播放器");if(!c)window.requestAnimationFrame(sizeYouTubePlayer);});
 $("queueToggle").addEventListener("click",function(){
-  const narrow=window.matchMedia("(max-width: 1120px)").matches;
+  if(playerCard.classList.contains("compact")){playerCard.classList.remove("compact");playerCard.hidden=false;$("miniToggle").textContent="縮小";$("miniToggle").setAttribute("aria-label","縮小播放器");window.requestAnimationFrame(sizeYouTubePlayer);}
+  const narrow=window.matchMedia("(max-width: 1080px)").matches;
   const activeClass=narrow?"queue-open":"queue-collapsed";
   const open=playerCard.classList.toggle(activeClass);
   this.setAttribute("aria-expanded",narrow?(open?"true":"false"):(open?"false":"true"));
