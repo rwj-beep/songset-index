@@ -295,6 +295,9 @@ body.player-open .toast{bottom:510px}
 .dock-song .player-link{display:none}
 .dock-song .current-artwork,.dock-song .now-title,.dock-song .now-subtitle{color:inherit;text-decoration:none}
 .dock-song .now-title,.dock-song .now-subtitle{display:block}
+.dock-title-line{display:flex;align-items:center;gap:6px;min-width:0}
+.dock-title-line .now-title{flex:1;min-width:0}
+.dock-clip-link{width:20px;height:20px;font-size:12px}
 .dock-song .now-title:hover,.dock-song .now-subtitle:hover{color:#fff;text-decoration:underline;text-decoration-color:#ff0033}
 .dock-song .current-artwork:focus-visible,.dock-song .now-title:focus-visible,.dock-song .now-subtitle:focus-visible,.track-art-link:focus-visible,.clip-link:focus-visible{outline:2px solid #ff627e;outline-offset:3px}
 .dock-actions{justify-content:flex-end;gap:5px}
@@ -382,7 +385,7 @@ body.player-open .toast{bottom:88px}
     </div>
     <div class="dock-song">
       <a id="currentArtwork" class="current-artwork" target="_blank" rel="noopener noreferrer" aria-label="開啟歌曲原始影片片段"></a>
-      <div class="now-meta"><a class="now-title" id="nowTitle" target="_blank" rel="noopener noreferrer">選擇一首歌開始播放</a><a class="now-subtitle" id="nowSubtitle" target="_blank" rel="noopener noreferrer"></a><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a></div>
+      <div class="now-meta"><div class="dock-title-line"><a class="now-title" id="nowTitle" target="_blank" rel="noopener noreferrer">選擇一首歌開始播放</a><a class="clip-link dock-clip-link" id="dockClipLink" target="_blank" rel="noopener noreferrer" aria-label="開啟歌曲原始影片片段" title="開啟歌曲原始影片片段">↗</a></div><a class="now-subtitle" id="nowSubtitle" target="_blank" rel="noopener noreferrer"></a><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a></div>
     </div>
     <div class="dock-actions"><span class="player-status-dot" aria-hidden="true"></span><span id="playerStatus">準備中</span><span class="queue-count" id="queueCount">播放清單尚未開始</span><div class="player-top-actions"><button id="queueToggle" aria-expanded="true">佇列</button><button id="miniToggle" aria-label="縮小播放器">縮小</button></div></div>
   </div>
@@ -617,6 +620,9 @@ function showPlayer(track){
   $("nowTitle").textContent=track.title;
   $("nowTitle").href=clipUrl(track);
   $("nowTitle").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
+  $("dockClipLink").href=clipUrl(track);
+  $("dockClipLink").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
+  $("dockClipLink").title="在 YouTube 開啟〈"+track.title+"〉原始片段";
   $("currentArtwork").replaceChildren(makeCover(track.videoId,"player-cover",track.title+" 封面",track));
   $("currentArtwork").href=clipUrl(track);
   $("currentArtwork").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
