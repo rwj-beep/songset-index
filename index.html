@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101018">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="搜尋、整理並播放 VTuber 與 VSinger 的歌回演唱版本。">
 <title>歌回索引</title>
 <style>
@@ -107,6 +108,100 @@ h1{font-size:clamp(28px,3vw,40px);line-height:1.2;margin:5px 0 7px;letter-spacin
 @media(max-width:1180px){.track-header,.track-row{grid-template-columns:38px minmax(210px,1.5fr) minmax(110px,.8fr) minmax(170px,1.2fr) 110px 66px;gap:9px}.thumb{width:48px;height:48px;flex-basis:48px}}
 @media(max-width:900px){.layout{grid-template-columns:245px minmax(0,1fr)}.sidebar{padding-left:16px;padding-right:12px}.track-header{display:none}.track-row{grid-template-columns:34px minmax(0,1fr) 108px 70px;gap:10px}.performer-cell,.stream-cell{grid-column:2}.performer-cell{display:none}.stream-cell{margin-top:-6px}.time-cell{grid-column:3;grid-row:1}.play-row{grid-column:4;grid-row:1}.title-cell{grid-column:2;grid-row:1}.index-cell{grid-column:1;grid-row:1}.track-row{min-height:83px}.source-link{margin-left:6px}}
 @media(max-width:680px){.topbar{height:62px;padding:0 16px}.header-stats{display:none}.layout{display:block}.sidebar{display:none}.main{padding:22px 14px 285px}.toolbar{display:block}.actions{margin-top:18px}.filters-mobile{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 16px}.filters-mobile .field{margin:0}.summary{align-items:flex-start}.track-row{grid-template-columns:27px minmax(0,1fr) 62px;gap:8px;padding:9px 5px}.title-cell{grid-column:2;grid-row:1}.time-cell{display:none}.play-row{grid-column:3;grid-row:1;padding:7px 6px}.stream-cell{grid-column:2;grid-row:2;margin-top:-14px}.index-cell{font-size:11px}.thumb{width:43px;height:43px;flex-basis:43px}.title-button{font-size:15px}.artist-button{font-size:12px}.stream-title{font-size:12px}.source-link{font-size:11px}.player-card{left:10px;right:10px;bottom:10px;width:auto}.player-body,.player-card.compact .player-body{grid-template-columns:165px minmax(0,1fr);gap:8px;padding:9px}.yt-frame,.player-card.compact .yt-frame{width:165px;height:132px}.player-card.compact{width:auto}.player-top{padding:9px 11px}.progress-wrap{padding:0 11px 9px}.player-controls{gap:5px}.control-button{padding:7px 8px;font-size:12px}.field label{font-size:12px}}
+
+/* Refined browsing layout */
+:root{--bg:#0a0c12;--panel:#121620;--panel2:#191e2b;--line:#2a3040;--accent:#b4a1ff;--accent2:#75e3ca;--active:#56e4c4;--shadow:0 18px 56px #0009}
+body{background:radial-gradient(ellipse at 72% -18%,#2d2852 0,transparent 36%),radial-gradient(ellipse at 4% 20%,#142a31 0,transparent 26%),var(--bg);overflow-x:hidden}
+.topbar{height:72px;padding-inline:clamp(18px,3vw,48px);background:#0b0d14ed}
+.brand-mark{border-radius:12px;background:linear-gradient(140deg,#b6a2ff,#7055df)}
+.layout{max-width:1960px;margin:0 auto;grid-template-columns:300px minmax(0,1fr)}
+.sidebar{position:sticky;top:72px;align-self:start;height:calc(100vh - 72px);overflow-y:auto;padding:25px 18px 230px 24px;background:#0e1119d9;border-right-color:#ffffff15;scrollbar-width:thin;scrollbar-color:#41465a transparent}
+.main{padding:32px clamp(20px,3vw,48px) 42px}
+.toolbar{align-items:center;padding:23px 25px;margin-bottom:20px;border:1px solid #ffffff14;border-radius:20px;background:linear-gradient(115deg,#181a29e8,#151923d9);box-shadow:0 14px 40px #0002}
+.eyebrow{letter-spacing:.13em}
+h1{font-size:clamp(28px,2.6vw,38px)}
+.actions{flex-shrink:0}
+.button{border-radius:12px;padding:11px 16px;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.button.primary{background:linear-gradient(135deg,#a28aff,#755ce8);box-shadow:0 8px 26px #7962ed40}
+.summary{min-height:54px;padding:13px 4px;margin:0 2px 5px;border-bottom-color:#ffffff1c}
+.summary-left,.summary-meta{display:flex;align-items:center;gap:10px;min-width:0}
+.summary-meta{justify-content:flex-end}
+.clear-filters{border:1px solid #41465a;background:#191d29;color:#ddd8f6;border-radius:9px;padding:6px 10px;cursor:pointer;font-size:12px;font-weight:700}
+.clear-filters:hover{border-color:var(--accent);color:#fff}
+.track-header,.track-row{grid-template-columns:42px minmax(230px,1.35fr) minmax(125px,.68fr) minmax(240px,1.32fr) 132px 78px;gap:13px}
+.track-header{height:44px;padding:0 15px;letter-spacing:.08em}
+.track-list{gap:8px;padding-top:7px}
+.track-row{min-height:78px;padding:10px 14px;border:1px solid #ffffff10;border-radius:14px;background:linear-gradient(110deg,#151923ed,#12151dee);box-shadow:0 4px 12px #00000012}
+.track-row:hover{background:linear-gradient(110deg,#1c2030,#171b26);border-color:#9b8be933;transform:translateY(-1px)}
+.track-row.current{background:linear-gradient(110deg,#292442,#1b2030);border-color:#a08afa77;box-shadow:inset 3px 0 #a993ff,0 5px 18px #0003}
+.index-cell{font-variant-numeric:tabular-nums}
+.thumb{border:1px solid #ffffff18;border-radius:11px}
+.title-button{font-size:16px}
+.version-link{border-color:#655b82;background:#28243a}
+.play-row{border-color:#4d5364;border-radius:10px;min-width:68px}
+.play-row.is-playing{color:#08231d;background:#75e3ca;border-color:#75e3ca}
+.play-row:focus-visible,.button:focus-visible,.clear-filters:focus-visible,.control-button:focus-visible,.player-top button:focus-visible{outline:2px solid #c1b2ff;outline-offset:2px}
+.load-more{margin-top:24px}
+.footer-note{margin:27px 4px 0}
+.filters-mobile{gap:10px}
+.filters-mobile .field{min-width:0}
+.player-card{position:fixed;z-index:20;left:0;right:0;bottom:0;width:100%;display:grid;grid-template-columns:minmax(250px,.85fr) minmax(460px,1.4fr);grid-template-rows:minmax(84px,auto) 23px;align-items:center;gap:3px 18px;padding:8px clamp(18px,3vw,48px) 5px;border:1px solid #ffffff20;border-bottom:0;border-radius:20px 20px 0 0;background:#11141deb;box-shadow:0 -14px 52px #0008;backdrop-filter:blur(22px)}
+.player-top{grid-column:1;grid-row:1;display:block;padding:8px 0;border:0}
+.player-top-actions{position:absolute;right:clamp(18px,3vw,48px);top:10px}
+.player-body{grid-column:2;grid-row:1;grid-template-columns:152px minmax(0,1fr);align-items:center;gap:13px;padding:0}
+.yt-frame{width:152px;height:86px;border:1px solid #ffffff1a;border-radius:12px}
+.player-side{justify-content:center;gap:12px}
+.queue-count{font-size:12px}
+.player-controls{gap:8px}
+.control-button{border-radius:10px;padding:8px 11px}
+.player-link{font-weight:700}
+.progress-wrap{grid-column:1/-1;grid-row:2;padding:0 3px 1px}
+.player-card.compact{width:100%}
+.player-card.compact .player-body{grid-template-columns:116px minmax(0,1fr)}
+.player-card.compact .yt-frame{width:116px;height:65px}
+.player-card.compact .now-subtitle{display:none}
+body.player-open .main{padding-bottom:150px}
+body.player-open .sidebar{padding-bottom:180px}
+body.player-open .toast{bottom:140px}
+@media(max-width:1180px){.track-header,.track-row{grid-template-columns:38px minmax(210px,1.35fr) minmax(115px,.7fr) minmax(195px,1.25fr) 125px 74px;gap:9px}}
+@media(max-width:1080px){.layout{display:block}.sidebar{display:none}.main{max-width:100%;padding:24px clamp(18px,3vw,36px) 38px}.filters-mobile{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 16px}.track-header{display:none}.track-row{grid-template-columns:36px minmax(0,1fr) 118px 76px;gap:10px;min-height:80px}.index-cell{grid-column:1;grid-row:1}.title-cell{grid-column:2;grid-row:1}.performer-cell{display:none}.stream-cell{grid-column:2;grid-row:2;margin-top:-7px}.time-cell{grid-column:3;grid-row:1}.play-row{grid-column:4;grid-row:1}.player-card{grid-template-columns:minmax(210px,.8fr) minmax(380px,1.4fr);gap:3px 14px;padding-inline:20px}.player-body{grid-template-columns:138px minmax(0,1fr);gap:10px}.yt-frame{width:138px;height:78px}.player-card.compact .player-body{grid-template-columns:112px minmax(0,1fr)}.player-card.compact .yt-frame{width:112px;height:63px}body.player-open .main{padding-bottom:140px}}
+@media(max-width:680px){.topbar{height:62px;padding:0 15px}.header-stats{display:none}.main{padding:18px 12px 28px}.toolbar{display:block;padding:18px 16px;border-radius:16px}.actions{margin-top:16px}.actions .button{flex:1}.filters-mobile{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.filters-mobile .field{margin:0}.filters-mobile .field.stream-filter{grid-column:1/-1}.filters-mobile input,.filters-mobile select{padding:10px 9px;font-size:13px}.summary{align-items:flex-start;gap:7px;font-size:12px}.summary-left{display:block}.summary-left strong{display:block;font-size:14px}.summary-meta{display:grid;justify-items:end;text-align:right}.track-list{gap:7px}.track-row{grid-template-columns:27px minmax(0,1fr) 63px;gap:7px;padding:9px 7px;min-height:75px}.title-cell{grid-column:2;grid-row:1}.time-cell{display:none}.play-row{grid-column:3;grid-row:1;padding:7px 5px;min-width:0;font-size:11px}.stream-cell{grid-column:2;grid-row:2;margin-top:-13px}.index-cell{font-size:11px}.thumb{width:42px;height:42px;flex-basis:42px}.title-button{font-size:14px}.artist-button{font-size:11px}.stream-title{font-size:11px}.source-link{font-size:10px;margin-left:5px}.player-card{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 21px;gap:4px;padding:8px 11px 6px;border-radius:15px 15px 0 0}.player-top{grid-column:1;grid-row:1;display:flex;align-items:center;gap:8px;padding:0}.player-top-actions{position:static;flex-shrink:0}.player-top button{padding:5px 8px;font-size:11px}.player-kicker{font-size:10px}.now-title{font-size:13px}.now-subtitle{display:none}.player-body,.player-card.compact .player-body{grid-column:1;grid-row:2;grid-template-columns:104px minmax(0,1fr);gap:9px;padding:0}.yt-frame,.player-card.compact .yt-frame{width:104px;height:59px}.player-side{gap:6px}.queue-count{font-size:10px}.player-controls{gap:5px}.control-button{padding:6px 7px;font-size:11px}.player-link{font-size:10px}.progress-wrap{grid-column:1;grid-row:3;padding:0 1px;font-size:10px}.player-card.compact .now-subtitle{display:none}body.player-open .main{padding-bottom:148px}body.player-open .toast{bottom:142px}}
+
+/* Stream discovery and cover art */
+.featured-stream{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.92fr);min-height:238px;margin:0 0 24px;overflow:hidden;border:1px solid #ffffff16;border-radius:20px;background:linear-gradient(115deg,#181a29,#111722 72%);box-shadow:0 16px 44px #0003}
+.featured-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(20px,3vw,34px);min-width:0}
+.feature-kicker{font-size:11px;font-weight:850;letter-spacing:.14em;color:var(--accent2);text-transform:uppercase}
+.feature-title{margin:8px 0 12px;font-size:clamp(21px,2vw,28px);line-height:1.3;letter-spacing:-.02em}
+.feature-meta{display:flex;align-items:center;flex-wrap:wrap;gap:7px;color:var(--muted);font-size:13px}
+.feature-chip{border:1px solid #ffffff18;border-radius:20px;padding:3px 9px;background:#ffffff08}
+.feature-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:20px}
+.feature-link{color:var(--accent2);font-size:13px;font-weight:750;text-decoration:none}
+.feature-link:hover{text-decoration:underline}
+.featured-art{position:relative;min-height:238px;background:#171a28}
+.featured-cover{position:absolute;inset:0;border-radius:0}
+.cover-frame{position:relative;display:block;overflow:hidden;border-radius:inherit;background:radial-gradient(ellipse at 68% 22%,#a08aff66,transparent 37%),linear-gradient(135deg,#22223a,#11252d 62%,#17202e)}
+.cover-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#e5ddff;transition:opacity .25s ease}
+.cover-fallback span{font-size:34px;text-shadow:0 5px 25px #9778ff80}
+.cover-fallback small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#d0c4ffb8}
+.cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.cover-frame.loaded .cover-image{opacity:1}
+.cover-frame.loaded .cover-fallback{opacity:0}
+.recent-section{margin:0 0 20px}
+.section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 2px 11px}
+.section-heading h2{margin:0;font-size:17px;letter-spacing:.01em}
+.section-heading span{color:var(--soft);font-size:12px}
+.recent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.recent-card{display:flex;flex-direction:column;gap:9px;min-width:0;padding:9px;text-align:left;border:1px solid #ffffff12;border-radius:14px;background:linear-gradient(145deg,#171b25,#11151d);cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.recent-card:hover{transform:translateY(-2px);border-color:#a993ff66;background:#1d2030}
+.recent-card.active{border-color:#a993ff9c;box-shadow:inset 0 0 0 1px #a993ff32}
+.recent-cover{width:100%;aspect-ratio:16/9;border-radius:9px}
+.recent-info{display:grid;gap:3px;min-width:0}
+.recent-meta{display:flex;justify-content:space-between;gap:6px;color:var(--soft);font-size:11px}
+.recent-title{display:-webkit-box;overflow:hidden;color:#eef0f8;font-size:13px;font-weight:750;line-height:1.4;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.8em}
+.track-header{position:sticky;top:72px;z-index:2;background:#0c0f16ed;backdrop-filter:blur(14px)}
+.track-row{min-height:82px}
+@media(max-width:900px){.featured-stream{grid-template-columns:minmax(0,1fr) minmax(250px,.9fr)}.recent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.track-header{top:62px}}
+@media(max-width:680px){.featured-stream{grid-template-columns:1fr;min-height:0;border-radius:16px}.featured-art{order:-1;min-height:0;height:auto;aspect-ratio:16/9}.featured-copy{padding:17px}.feature-title{font-size:21px}.feature-actions{margin-top:15px}.recent-grid{grid-template-columns:repeat(4,minmax(142px,1fr));overflow-x:auto;padding:1px 1px 8px;scroll-snap-type:x mandatory}.recent-card{scroll-snap-align:start}.recent-cover{aspect-ratio:16/10}.track-header{position:static}.cover-fallback span{font-size:29px}}
 </style>
 </head>
 <body>
@@ -131,7 +226,7 @@ h1{font-size:clamp(28px,3vw,40px);line-height:1.2;margin:5px 0 7px;letter-spacin
   </aside>
   <main class="main">
     <section class="toolbar">
-      <div><div class="eyebrow">VTuber / VSinger song library</div><h1>全部演唱版本</h1><p class="subline" id="subline">整理每場歌回的歌曲、原唱與完整時間軸。</p></div>
+      <div><div class="eyebrow">VTuber / VSinger song library</div><h1 id="pageTitle">全部演唱版本</h1><p class="subline" id="subline">整理每場歌回的歌曲、原唱與完整時間軸。</p></div>
       <div class="actions"><button id="playAll" class="button primary">播放全部</button><button id="shuffleAll" class="button shuffle">隨機播放</button></div>
     </section>
     <section class="filters-mobile" aria-label="曲庫篩選">
@@ -139,8 +234,14 @@ h1{font-size:clamp(28px,3vw,40px);line-height:1.2;margin:5px 0 7px;letter-spacin
       <div class="field"><label for="mobileMonthSelect">月份</label><select id="mobileMonthSelect"><option value="">所有月份</option></select></div>
       <div class="field"><label for="mobilePerformerInput">演唱者</label><input id="mobilePerformerInput" list="performerOptions" placeholder="所有演唱者"></div>
       <div class="field"><label for="mobileArtistInput">原唱</label><input id="mobileArtistInput" list="artistOptions" placeholder="所有原唱"></div>
+      <div class="field stream-filter"><label for="mobileStreamSelect">歌回場次</label><select id="mobileStreamSelect"><option value="">所有歌回</option></select></div>
     </section>
-    <div class="summary"><div><strong id="resultCount">載入曲庫中…</strong><span id="activeDescription"></span></div><div id="streamCount"></div></div>
+    <section id="featuredStream" class="featured-stream" aria-label="歌回預覽"></section>
+    <section class="recent-section" aria-label="近期歌回">
+      <div class="section-heading"><h2>近期歌回</h2><span>選擇封面可查看該場歌單</span></div>
+      <div id="recentStreams" class="recent-grid"></div>
+    </section>
+    <div class="summary"><div class="summary-left"><strong id="resultCount">載入曲庫中…</strong><span id="activeDescription"></span></div><div class="summary-meta"><button id="clearFilters" class="clear-filters" hidden>清除篩選</button><div id="streamCount"></div></div></div>
     <div class="track-header"><span>#</span><span>歌曲／原唱</span><span>演唱者</span><span>歌回場次</span><span>起訖</span><span></span></div>
     <section id="trackList" class="track-list" aria-live="polite"></section>
     <button id="loadMore" class="button load-more" hidden>載入更多曲目</button>
@@ -169,9 +270,9 @@ const allTracks=[];
 const setlistById=new Map();
 setlists.forEach(function(st){
   setlistById.set(st.id,st);
-  (st.songs||[]).forEach(function(song){
+  (st.songs||[]).forEach(function(song,songIndex){
     const match=String(st.videoUrl||"").match(/[?&]v=([^&]+)/)||String(st.videoUrl||"").match(/youtu\.be\/([^?&]+)/);
-    allTracks.push({key:st.id+":"+song.position,setlistId:st.id,performer:st.performer,title:song.title,artist:song.artist,startSeconds:Number(song.startSeconds)||0,endSeconds:Number(song.endSeconds)||0,position:Number(song.position)||0,streamTitle:st.title,streamDate:st.streamDate,videoUrl:st.videoUrl,videoId:match?match[1]:"",sourceCommentUrl:st.sourceCommentUrl||st.videoUrl});
+    allTracks.push({key:st.id+":"+(songIndex+1),setlistId:st.id,performer:st.performer,title:song.title,artist:song.artist,startSeconds:Number(song.startSeconds)||0,endSeconds:Number(song.endSeconds)||0,position:Number(song.position)||songIndex+1,streamTitle:st.title,streamDate:st.streamDate,videoUrl:st.videoUrl,videoId:match?match[1]:"",sourceCommentUrl:st.sourceCommentUrl||st.videoUrl});
   });
 });
 allTracks.sort(function(a,b){return a.streamDate.localeCompare(b.streamDate)||a.position-b.position;});
@@ -187,7 +288,7 @@ const performers=Array.from(new Set(allTracks.map(function(t){return t.performer
 const artists=Array.from(new Set(allTracks.map(function(t){return t.artist;}))).filter(Boolean).sort(function(a,b){return a.localeCompare(b,"ja");});
 const $=function(id){return document.getElementById(id);};
 const search=$("searchInput"), performer=$("performerInput"), artist=$("artistInput"), month=$("monthSelect"), stream=$("streamSelect");
-let pageSize=100, filtered=[], queue=[], baseQueue=[], queueIndex=-1, shuffleOn=false, currentTrack=null, player=null, playerReady=false, pendingTrack=null, advancing=false, toastTimer=null, lastUpdate=0;
+let pageSize=100, filtered=[], queue=[], baseQueue=[], queueIndex=-1, shuffleOn=false, currentTrack=null, player=null, playerReady=false, pendingTrack=null, advancing=false, segmentReady=false, segmentTarget=0, segmentDirection="forward", loadedVideoId="", toastTimer=null;
 const playerCard=$("playerCard");
 $("headerStats").textContent=setlists.length+" 場歌回 · "+allTracks.length.toLocaleString()+" 個演唱版本";
 $("subline").textContent="共 "+performers.length+" 位演唱者，依原唱、月份與歌回場次檢索；同曲不同場次各自保留。";
@@ -196,7 +297,7 @@ fillDatalist("performerOptions",performers);fillDatalist("artistOptions",artists
 function addOption(select,value,label){const op=document.createElement("option");op.value=value;op.textContent=label;select.appendChild(op);}
 Array.from(months.keys()).sort().forEach(function(m){addOption(month,m,monthName(m));addOption($("mobileMonthSelect"),m,monthName(m));});
 const sortedStreams=setlists.slice().sort(function(a,b){return a.streamDate.localeCompare(b.streamDate)||a.title.localeCompare(b.title);});
-sortedStreams.forEach(function(s){const label=s.streamDate+" · "+s.title;addOption(stream,s.id,label);});
+sortedStreams.forEach(function(s){const label=s.streamDate+" · "+s.title;addOption(stream,s.id,label);addOption($("mobileStreamSelect"),s.id,label);});
 function showToast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove("show");},2300);}
 function currentFilters(){return {q:normalize(search.value),p:normalize(performer.value),a:normalize(artist.value),m:month.value,s:stream.value};}
 function matchFilters(t,f){
@@ -205,21 +306,56 @@ function matchFilters(t,f){
 }
 function calcFiltered(){const f=currentFilters();return allTracks.filter(function(t){return matchFilters(t,f);});}
 function createButton(text,className,fn){const b=document.createElement("button");b.type="button";b.className=className;b.textContent=text;b.addEventListener("click",fn);return b;}
-function filterByArtist(value){artist.value=value;search.value="";stream.value="";render();window.scrollTo({top:0,behavior:"smooth"});}
-function filterByPerformer(value){performer.value=value;search.value="";stream.value="";render();window.scrollTo({top:0,behavior:"smooth"});}
-function filterByMonth(value){month.value=value;stream.value="";$("mobileMonthSelect").value=value;render();}
-function selectStream(id){stream.value=id;render();window.scrollTo({top:0,behavior:"smooth"});}
+function filterByArtist(value){artist.value=value;$("mobileArtistInput").value=value;search.value="";$("mobileSearchInput").value="";stream.value="";$("mobileStreamSelect").value="";render();window.scrollTo({top:0,behavior:"smooth"});}
+function filterByPerformer(value){performer.value=value;$("mobilePerformerInput").value=value;search.value="";$("mobileSearchInput").value="";stream.value="";$("mobileStreamSelect").value="";render();window.scrollTo({top:0,behavior:"smooth"});}
+function filterByMonth(value){month.value=value;stream.value="";$("mobileMonthSelect").value=value;$("mobileStreamSelect").value="";render();}
+function selectStream(id){stream.value=id;$("mobileStreamSelect").value=id;render();window.scrollTo({top:0,behavior:"smooth"});}
+function videoIdOf(url){const match=String(url||"").match(/[?&]v=([^&]+)/)||String(url||"").match(/youtu\.be\/([^?&]+)/);return match?match[1]:"";}
+function makeCover(videoId,className,altText){
+  const frame=document.createElement("div");frame.className="cover-frame "+className;
+  const fallback=document.createElement("div");fallback.className="cover-fallback";fallback.setAttribute("aria-hidden","true");
+  const note=document.createElement("span");note.textContent="♫";const label=document.createElement("small");label.textContent="歌回影片預覽";fallback.append(note,label);frame.appendChild(fallback);
+  if(!videoId)return frame;
+  const img=document.createElement("img");img.className="cover-image";img.alt=altText||"";img.loading="lazy";img.decoding="async";
+  const encodedId=encodeURIComponent(videoId);
+  const sources=["https://img.youtube.com/vi/"+encodedId+"/hqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/mqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/0.jpg"];
+  let sourceIndex=0;img.onload=function(){frame.classList.add("loaded");};img.onerror=function(){sourceIndex++;if(sourceIndex<sources.length){img.src=sources[sourceIndex];}else{img.remove();}};frame.appendChild(img);img.src=sources[sourceIndex];if(img.complete&&img.naturalWidth)frame.classList.add("loaded");return frame;
+}
+function renderFeatured(st,filteredSetlists){
+  const root=$("featuredStream");root.replaceChildren();if(!st)return;
+  const art=document.createElement("div");art.className="featured-art";art.appendChild(makeCover(videoIdOf(st.videoUrl),"featured-cover",st.title+" 封面"));
+  const copy=document.createElement("div");copy.className="featured-copy";
+  const kicker=document.createElement("div");kicker.className="feature-kicker";kicker.textContent=stream.value?"目前選取的歌回":filteredSetlists?"符合目前篩選的歌回":"最近收錄的歌回";
+  const title=document.createElement("h2");title.className="feature-title";title.textContent=st.title;
+  const meta=document.createElement("div");meta.className="feature-meta";
+  [st.streamDate,st.performer,String((st.songs||[]).length)+" 首曲目"].forEach(function(value){const chip=document.createElement("span");chip.className="feature-chip";chip.textContent=value;meta.appendChild(chip);});
+  const actions=document.createElement("div");actions.className="feature-actions";
+  const browse=createButton("查看這場歌單","button primary",function(){selectStream(st.id);$("trackList").scrollIntoView({behavior:"smooth",block:"start"});});
+  const play=createButton("播放此場","button shuffle",function(){const items=allTracks.filter(function(t){return t.setlistId===st.id;});if(items.length)startQueue(items,items[0].key,false);});
+  const watch=document.createElement("a");watch.className="feature-link";watch.href=st.videoUrl;watch.target="_blank";watch.rel="noopener noreferrer";watch.textContent="開啟回放 ↗";
+  actions.append(browse,play,watch);copy.append(kicker,title,meta,actions);root.append(copy,art);
+}
+function renderRecentStreams(items,activeId){
+  const root=$("recentStreams");root.replaceChildren();
+  const recent=items.slice().sort(function(a,b){return b.streamDate.localeCompare(a.streamDate)||b.title.localeCompare(a.title);}).slice(0,4);
+  recent.forEach(function(st){
+    const card=createButton("","recent-card"+(st.id===activeId?" active":""),function(){selectStream(st.id);});card.setAttribute("aria-label",st.streamDate+" · "+st.title+" · "+(st.songs||[]).length+" 首");
+    const cover=makeCover(videoIdOf(st.videoUrl),"recent-cover",st.title+" 封面");const info=document.createElement("span");info.className="recent-info";
+    const meta=document.createElement("span");meta.className="recent-meta";const date=document.createElement("span");date.textContent=st.streamDate;const count=document.createElement("span");count.textContent=(st.songs||[]).length+" 首";meta.append(date,count);
+    const title=document.createElement("span");title.className="recent-title";title.textContent=st.title;info.append(meta,title);card.append(cover,info);root.appendChild(card);
+  });
+}
 function makeTrackRow(t,index){
-  const row=document.createElement("article");row.className="track-row"+(currentTrack&&currentTrack.key===t.key?" current":"");
+  const row=document.createElement("article");row.className="track-row"+(currentTrack&&currentTrack.key===t.key?" current":"");row.dataset.trackKey=t.key;
   const idx=document.createElement("div");idx.className="index-cell";idx.textContent=String(index+1).padStart(2,"0");
   const titleCell=document.createElement("div");titleCell.className="title-cell";
-  const img=document.createElement("img");img.className="thumb";img.loading="lazy";img.alt="";img.src="https://i.ytimg.com/vi/"+encodeURIComponent(t.videoId)+"/maxresdefault.jpg";img.onerror=function(){if(!this.dataset.fallback){this.dataset.fallback="1";this.src="https://i.ytimg.com/vi/"+encodeURIComponent(t.videoId)+"/hqdefault.jpg";}else{this.style.visibility="hidden";}};
+  const cover=makeCover(t.videoId,"track-cover",t.streamTitle+" 封面");
   const stack=document.createElement("div");stack.className="title-stack";
   const title=createButton(t.title,"title-button",function(){playDirect(t);});
   const num=titleCounts.get(normalize(t.title))||1;
-  if(num>1){const versions=createButton(num+" 個版本","version-link",function(){search.value=t.title;performer.value="";artist.value="";month.value="";stream.value="";$("mobileSearchInput").value=t.title;render();showToast("顯示〈"+t.title+"〉的 "+num+" 個演唱版本");});stack.append(title,versions);}else stack.appendChild(title);
+  if(num>1){const versions=createButton(num+" 個版本","version-link",function(){search.value=t.title;performer.value="";artist.value="";month.value="";stream.value="";$("mobileSearchInput").value=t.title;$("mobilePerformerInput").value="";$("mobileArtistInput").value="";$("mobileMonthSelect").value="";$("mobileStreamSelect").value="";render();showToast("顯示〈"+t.title+"〉的 "+num+" 個演唱版本");});stack.append(title,versions);}else stack.appendChild(title);
   const artistBtn=createButton("原唱 "+(t.artist||"未標註"),"artist-button",function(){filterByArtist(t.artist);$("mobileArtistInput").value=t.artist;});
-  stack.appendChild(artistBtn);titleCell.append(img,stack);
+  stack.appendChild(artistBtn);titleCell.append(cover,stack);
   const performerCell=document.createElement("div");performerCell.className="performer-cell";performerCell.appendChild(createButton(t.performer,"meta-button",function(){filterByPerformer(t.performer);$("mobilePerformerInput").value=t.performer;}));
   const streamCell=document.createElement("div");streamCell.className="stream-cell";
   const streamBtn=createButton(t.streamTitle,"meta-button stream-title",function(){selectStream(t.setlistId);});
@@ -227,7 +363,8 @@ function makeTrackRow(t,index){
   const source=document.createElement("a");source.className="source-link";source.href=t.sourceCommentUrl;source.target="_blank";source.rel="noopener noreferrer";source.textContent="留言時間軸";
   streamCell.append(streamBtn,date,source);
   const time=document.createElement("div");time.className="time-cell";time.textContent=fmt(t.startSeconds)+" – "+fmt(t.endSeconds);
-  const play=createButton(currentTrack&&currentTrack.key===t.key?"播放中":"播放","play-row"+(currentTrack&&currentTrack.key===t.key?" is-playing":""),function(){playDirect(t);});
+  const selected=currentTrack&&currentTrack.key===t.key,playing=selected&&isCurrentTrackPlaying(t);
+  const play=createButton(playing?"播放中":selected?"已選取":"播放","play-row"+(playing?" is-playing":""),function(){playDirect(t);});
   row.append(idx,titleCell,performerCell,streamCell,time,play);
   return row;
 }
@@ -240,15 +377,21 @@ function render(){
   if(f.a)labels.push("原唱 "+artist.value.trim());
   if(f.m)labels.push(monthName(f.m));
   if(f.s){const chosen=setlistById.get(f.s);if(chosen)labels.push(chosen.streamDate+" 歌回");}
+  const selectedStream=f.s?setlistById.get(f.s):null;
+  $("pageTitle").textContent=selectedStream?selectedStream.streamDate+" 歌回曲目":f.q?"搜尋結果":f.p?performer.value.trim()+" 的演唱版本":f.a?"原唱："+artist.value.trim():f.m?monthName(f.m)+" 歌回曲目":"全部演唱版本";
   $("activeDescription").textContent=labels.length?"　·　"+labels.join("　/　"):"　·　全部曲庫";
-  const matchingStreams=new Set(filtered.map(function(t){return t.setlistId;}));
-  $("streamCount").textContent=matchingStreams.size.toLocaleString()+" 場歌回";
+  $("clearFilters").hidden=labels.length===0;
+  const matchingIds=new Set(filtered.map(function(t){return t.setlistId;}));
+  const matchingSetlists=sortedStreams.filter(function(s){return matchingIds.has(s.id);});
+  $("streamCount").textContent=matchingSetlists.length.toLocaleString()+" 場歌回";
   const list=$("trackList");list.replaceChildren();
-  if(!filtered.length){const empty=document.createElement("div");empty.className="empty-state";empty.textContent="沒有符合條件的歌曲，試試曲名、原唱或演唱者。";list.appendChild(empty);$("loadMore").hidden=true;return;}
-  const shown=filtered.slice(0,pageSize);const frag=document.createDocumentFragment();
-  shown.forEach(function(t,i){frag.appendChild(makeTrackRow(t,i));});list.appendChild(frag);
-  $("loadMore").hidden=filtered.length<=shown.length;
-  $("loadMore").textContent="載入更多曲目（"+shown.length.toLocaleString()+" / "+filtered.length.toLocaleString()+"）";
+  const shown=filtered.slice(0,pageSize);
+  if(!filtered.length){const empty=document.createElement("div");empty.className="empty-state";empty.textContent="沒有符合條件的歌曲，試試曲名、原唱或演唱者。";list.appendChild(empty);$("loadMore").hidden=true;}
+  else{
+    const frag=document.createDocumentFragment();shown.forEach(function(t,i){frag.appendChild(makeTrackRow(t,i));});list.appendChild(frag);
+    $("loadMore").hidden=filtered.length<=shown.length;
+    $("loadMore").textContent="載入更多曲目（"+shown.length.toLocaleString()+" / "+filtered.length.toLocaleString()+"）";
+  }
   $("monthList").replaceChildren();
   Array.from(months.entries()).sort(function(a,b){return a[0].localeCompare(b[0]);}).forEach(function(entry){
     const b=createButton(monthName(entry[0]),"month-button"+(f.m===entry[0]?" active":""),function(){filterByMonth(f.m===entry[0]?"":entry[0]);});
@@ -260,18 +403,41 @@ function render(){
     const b=createButton(label,"stream-button"+(f.s===s.id?" active":""),function(){selectStream(f.s===s.id?"":s.id);});
     const n=document.createElement("span");n.className="count-pill";n.textContent=String((s.songs||[]).length);b.appendChild(n);$("streamList").appendChild(b);
   });
+  const featuredStream=selectedStream||(matchingSetlists[matchingSetlists.length-1])||sortedStreams[sortedStreams.length-1];
+  renderFeatured(featuredStream,labels.length>0&&matchingSetlists.length>0);
+  renderRecentStreams(matchingSetlists.length?matchingSetlists:sortedStreams,selectedStream&&selectedStream.id);
 }
 function setShuffleVisual(){const b=$("shuffleToggle");b.classList.toggle("active",shuffleOn);b.setAttribute("aria-pressed",shuffleOn?"true":"false");$("shuffleAll").classList.toggle("active",shuffleOn);}
 function shuffleArray(items){const result=items.slice();for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=result[i];result[i]=result[j];result[j]=tmp;}return result;}
 function shuffleWithFirst(items,key){const first=items.find(function(t){return t.key===key;});const rest=items.filter(function(t){return t.key!==key;});return first?[first].concat(shuffleArray(rest)):shuffleArray(items);}
+// Ignore the previous clip's reported time until YouTube lands on the new seek target.
+function isNearSegmentStart(seconds){
+  const earlyTolerance=segmentDirection==="backward"?3:1.5;
+  const lateTolerance=segmentDirection==="backward"?1.5:3;
+  return seconds>=Math.max(0,segmentTarget-earlyTolerance)&&seconds<=segmentTarget+lateTolerance;
+}
+function isCurrentTrackPlaying(track){
+  if(!playerReady||!player||!segmentReady||!currentTrack||currentTrack.key!==track.key)return false;
+  try{return player.getPlayerState()===YT.PlayerState.PLAYING;}catch(e){return false;}
+}
+function refreshCurrentTrackButton(){
+  if(!currentTrack)return;
+  const row=Array.from(document.querySelectorAll(".track-row")).find(function(item){return item.dataset.trackKey===currentTrack.key;});
+  if(!row)return;
+  const button=row.querySelector(".play-row");if(!button)return;
+  const playing=isCurrentTrackPlaying(currentTrack);
+  button.textContent=playing?"播放中":"已選取";
+  button.classList.toggle("is-playing",playing);
+}
 function showPlayer(track){
   playerCard.hidden=false;
+  document.body.classList.add("player-open");
   $("nowTitle").textContent=track.title;
   $("nowSubtitle").textContent=track.performer+" · 原唱 "+track.artist+" · "+track.streamDate+" · "+track.streamTitle;
   $("playerStatus").textContent="正在載入";
   $("sourceLink").href=track.sourceCommentUrl;
   $("queueCount").textContent=(queueIndex+1)+" / "+queue.length+" 首";
-  $("elapsed").textContent=fmt(track.startSeconds);
+  $("elapsed").textContent=fmt(0);
   $("duration").textContent=fmt(Math.max(0,track.endSeconds-track.startSeconds));
   $("progress").max=Math.max(1,track.endSeconds-track.startSeconds);
   $("progress").value=0;
@@ -279,15 +445,33 @@ function showPlayer(track){
 }
 function loadCurrent(){
   if(queueIndex<0||queueIndex>=queue.length){finishQueue();return;}
-  currentTrack=queue[queueIndex];
+  const track=queue[queueIndex];
+  const sameVideo=playerReady&&loadedVideoId===track.videoId;
+  let previousTime=0;
+  if(sameVideo){try{previousTime=player.getCurrentTime();}catch(e){}}
+  segmentReady=false;segmentTarget=track.startSeconds;
+  segmentDirection=sameVideo&&previousTime>segmentTarget+2?"backward":"forward";
+  currentTrack=track;
   showPlayer(currentTrack);
-  if(playerReady){advancing=true;player.loadVideoById({videoId:currentTrack.videoId,startSeconds:currentTrack.startSeconds,endSeconds:currentTrack.endSeconds});player.playVideo();setTimeout(function(){advancing=false;},1200);}
+  pendingTrack=currentTrack;
+  if(playerReady){
+    advancing=true;pendingTrack=null;loadedVideoId=track.videoId;
+    try{
+      if(sameVideo){
+        player.seekTo(track.startSeconds,true);
+        if(player.getPlayerState()!==YT.PlayerState.PLAYING)player.playVideo();
+      }else{
+        player.loadVideoById({videoId:track.videoId,startSeconds:track.startSeconds,endSeconds:track.endSeconds});
+      }
+    }catch(e){advancing=false;$("playerStatus").textContent="播放器載入失敗";showToast("播放器暫時無法載入，請稍後再試");}
+  }
   else{pendingTrack=currentTrack;$("playerStatus").textContent="正在連接播放器";}
 }
 function finishQueue(){
+  advancing=false;segmentReady=false;
   currentTrack=null;queueIndex=-1;pendingTrack=null;
   if(player&&playerReady){player.pauseVideo();}
-  $("playerStatus").textContent="播放清單已播完";$("queueCount").textContent="目前清單已播放完畢";$("pauseButton").textContent="播放";render();
+  $("playerStatus").textContent="播放清單已播完";$("queueCount").textContent="目前清單已播放完畢";$("pauseButton").textContent="重播";$("pauseButton").setAttribute("aria-label","重播播放清單");render();
 }
 function startQueue(items,startKey,randomized){
   if(!items.length){showToast("目前篩選沒有歌曲");return;}
@@ -307,16 +491,25 @@ function playDirect(t){
   const base=scoped?filtered.slice():allTracks.slice();
   startQueue(base,t.key,shuffleOn);
 }
-function advance(){
-  if(advancing)return;
-  advancing=true;
-  if(queueIndex+1>=queue.length){finishQueue();advancing=false;return;}
-  queueIndex++;currentTrack=queue[queueIndex];loadCurrent();
-  setTimeout(function(){advancing=false;},1400);
+function advance(manual){
+  if(!manual&&advancing)return;
+  if(queueIndex<0||!currentTrack)return;
+  if(queueIndex+1>=queue.length){finishQueue();return;}
+  queueIndex++;loadCurrent();
 }
 function previous(){
-  if(queueIndex<=0){if(currentTrack&&playerReady)player.seekTo(currentTrack.startSeconds,true);return;}
-  queueIndex--;currentTrack=queue[queueIndex];loadCurrent();
+  if(queueIndex<=0){
+    if(currentTrack&&playerReady){
+      let previousTime=0;try{previousTime=player.getCurrentTime();}catch(e){}
+      segmentReady=false;segmentTarget=currentTrack.startSeconds;
+      segmentDirection=previousTime>segmentTarget+2?"backward":"forward";advancing=true;
+      player.seekTo(currentTrack.startSeconds,true);
+      if(player.getPlayerState()!==YT.PlayerState.PLAYING)player.playVideo();
+      refreshCurrentTrackButton();
+    }
+    return;
+  }
+  queueIndex--;loadCurrent();
 }
 $("playAll").addEventListener("click",playAll);
 $("shuffleAll").addEventListener("click",shuffleAll);
@@ -324,14 +517,21 @@ $("loadMore").addEventListener("click",function(){pageSize+=100;render();});
 $("searchInput").addEventListener("input",function(){ $("mobileSearchInput").value=this.value;render();});
 $("performerInput").addEventListener("input",function(){ $("mobilePerformerInput").value=this.value;render();});
 $("artistInput").addEventListener("input",function(){ $("mobileArtistInput").value=this.value;render();});
-$("monthSelect").addEventListener("change",function(){ $("mobileMonthSelect").value=this.value;stream.value="";render();});
-$("streamSelect").addEventListener("change",render);
+$("monthSelect").addEventListener("change",function(){ $("mobileMonthSelect").value=this.value;stream.value="";$("mobileStreamSelect").value="";render();});
+$("streamSelect").addEventListener("change",function(){$("mobileStreamSelect").value=this.value;render();});
 $("mobileSearchInput").addEventListener("input",function(){search.value=this.value;render();});
 $("mobilePerformerInput").addEventListener("input",function(){performer.value=this.value;render();});
 $("mobileArtistInput").addEventListener("input",function(){artist.value=this.value;render();});
-$("mobileMonthSelect").addEventListener("change",function(){month.value=this.value;stream.value="";render();});
-$("pauseButton").addEventListener("click",function(){if(!playerReady||!player)return;if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();this.textContent="繼續";this.setAttribute("aria-label","繼續播放");$("playerStatus").textContent="已暫停";}else{player.playVideo();this.textContent="暫停";this.setAttribute("aria-label","暫停播放");$("playerStatus").textContent="正在載入";}});
-$("nextButton").addEventListener("click",advance);
+$("mobileMonthSelect").addEventListener("change",function(){month.value=this.value;stream.value="";$("mobileStreamSelect").value="";render();});
+$("mobileStreamSelect").addEventListener("change",function(){stream.value=this.value;render();window.scrollTo({top:0,behavior:"smooth"});});
+$("clearFilters").addEventListener("click",function(){search.value="";performer.value="";artist.value="";month.value="";stream.value="";$('mobileSearchInput').value="";$('mobilePerformerInput').value="";$('mobileArtistInput').value="";$('mobileMonthSelect').value="";$('mobileStreamSelect').value="";pageSize=100;render();window.scrollTo({top:0,behavior:"smooth"});});
+$("pauseButton").addEventListener("click",function(){
+  if(!playerReady||!player)return;
+  if(!currentTrack){if(baseQueue.length)startQueue(baseQueue,baseQueue[0].key,shuffleOn);return;}
+  if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();this.textContent="繼續";this.setAttribute("aria-label","繼續播放");$("playerStatus").textContent="已暫停";}
+  else{player.playVideo();this.textContent="暫停";this.setAttribute("aria-label","暫停播放");$("playerStatus").textContent="正在載入";}
+});
+$("nextButton").addEventListener("click",function(){advance(true);});
 $("previousButton").addEventListener("click",previous);
 $("shuffleToggle").addEventListener("click",function(){
   shuffleOn=!shuffleOn;
@@ -346,32 +546,62 @@ $("progress").addEventListener("input",function(){if(playerReady&&player&&curren
 function updateProgress(){
   if(!playerReady||!player||!currentTrack)return;
   try{
-    const now=player.getCurrentTime(),rel=Math.max(0,Math.min(currentTrack.endSeconds-currentTrack.startSeconds,now-currentTrack.startSeconds));
-    $("progress").value=rel;$("elapsed").textContent=fmt(now);
+    const now=player.getCurrentTime();
     const playing=player.getPlayerState()===YT.PlayerState.PLAYING;
+    if(!segmentReady&&isNearSegmentStart(now)){
+      segmentReady=true;advancing=false;
+      $("playerStatus").textContent=playing?"正在播放":"已暫停";
+      refreshCurrentTrackButton();
+    }
+    const rel=segmentReady?Math.max(0,Math.min(currentTrack.endSeconds-currentTrack.startSeconds,now-currentTrack.startSeconds)):0;
+    $("progress").value=rel;$("elapsed").textContent=fmt(rel);
     $("pauseButton").textContent=playing?"暫停":"繼續";
     $("pauseButton").setAttribute("aria-label",playing?"暫停播放":"繼續播放");
-    if(player.getPlayerState()===YT.PlayerState.PLAYING&&now>=currentTrack.endSeconds-0.4&&!advancing)advance();
+    if(playing&&segmentReady&&now>=currentTrack.endSeconds-0.4&&!advancing)advance(false);
   }catch(e){}
 }
 function onPlayerStateChange(event){
   if(!window.YT)return;
-  if(event.data===YT.PlayerState.PLAYING){$("playerStatus").textContent="正在播放";$("pauseButton").textContent="暫停";$("pauseButton").setAttribute("aria-label","暫停播放");}
-  if(event.data===YT.PlayerState.ENDED&&!advancing)advance();
+  if(!currentTrack)return;
+  let activeVideo="";try{activeVideo=player.getVideoData().video_id||"";}catch(e){}
+  if(activeVideo&&activeVideo!==currentTrack.videoId)return;
+  if(event.data===YT.PlayerState.PLAYING){
+    let now=0;try{now=player.getCurrentTime();}catch(e){}
+    if(!segmentReady&&isNearSegmentStart(now)){segmentReady=true;advancing=false;}
+    $("playerStatus").textContent=segmentReady?"正在播放":"正在定位歌曲";
+    $("pauseButton").textContent="暫停";$("pauseButton").setAttribute("aria-label","暫停播放");refreshCurrentTrackButton();
+  }
+  if(event.data===YT.PlayerState.ENDED&&segmentReady&&!advancing&&player.getPlayerState()===YT.PlayerState.ENDED)advance(false);
   if(event.data===YT.PlayerState.PAUSED){$("playerStatus").textContent="已暫停";$("pauseButton").textContent="繼續";$("pauseButton").setAttribute("aria-label","繼續播放");}
   if(event.data===YT.PlayerState.BUFFERING){$("playerStatus").textContent="正在載入";}
 }
-const api=document.createElement("script");api.src="https://www.youtube.com/iframe_api";api.async=true;document.head.appendChild(api);
-window.onYouTubeIframeAPIReady=function(){
+let playerApiTimeout=null;
+function reportPlayerUnavailable(){
+  if(playerReady||!currentTrack)return;
+  $("playerStatus").textContent="播放器連線逾時";
+  showToast("YouTube 播放器連不上，請按「開啟原留言時間軸」播放");
+}
+function initializeYouTubePlayer(){
+  if(player||!window.YT||!YT.Player)return;
   const first=allTracks.find(function(t){return t.videoId;});
   if(!first)return;
   player=new YT.Player("ytPlayer",{width:"300",height:"169",videoId:first.videoId,playerVars:{autoplay:0,controls:1,rel:0,playsinline:1,iv_load_policy:3,vq:"hd1080"},events:{
-    onReady:function(){playerReady=true;if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
+    onReady:function(){playerReady=true;if(playerApiTimeout){clearTimeout(playerApiTimeout);playerApiTimeout=null;}if(pendingTrack){const pending=pendingTrack;pendingTrack=null;const ix=queue.findIndex(function(t){return t.key===pending.key;});if(ix>=0)queueIndex=ix;loadCurrent();}},
     onStateChange:onPlayerStateChange,
-    onError:function(e){$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");},
-    onAutoplayBlocked:function(){$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="播放";$("pauseButton").setAttribute("aria-label","播放");showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
+    onError:function(e){advancing=false;$("playerStatus").textContent="影片無法嵌入";showToast("此直播目前無法在網站內播放，請查看原留言連結");},
+    onAutoplayBlocked:function(){advancing=false;$("playerStatus").textContent="自動播放被瀏覽器攔截";$("pauseButton").textContent="播放";$("pauseButton").setAttribute("aria-label","播放");showToast("瀏覽器封鎖自動播放，請點播放器中的播放按鈕");}
   }});
-};
+}
+// Register the IFrame API callback before inserting its async script; otherwise
+// a fast load can call the API-ready event before the handler exists.
+window.onYouTubeIframeAPIReady=initializeYouTubePlayer;
+if(window.YT&&YT.Player)initializeYouTubePlayer();
+else{
+  const api=document.createElement("script");api.src="https://www.youtube.com/iframe_api";api.async=true;
+  api.onerror=reportPlayerUnavailable;
+  playerApiTimeout=setTimeout(reportPlayerUnavailable,12000);
+  document.head.appendChild(api);
+}
 window.setInterval(updateProgress,350);
 render();
 })();
