@@ -16,7 +16,7 @@ button{color:inherit}
 a{color:inherit}
 .app{min-height:100vh}
 .topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 28px;border-bottom:1px solid #ffffff12;background:#0c0e16e8;position:sticky;top:0;z-index:5;backdrop-filter:blur(18px)}
-.brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;letter-spacing:.04em}
+.brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;letter-spacing:.04em;color:inherit;text-decoration:none;border-radius:12px;cursor:pointer;transition:opacity .15s ease}.brand:hover{opacity:.88}.brand:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
 .brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#aa91ff,#674edf);box-shadow:0 4px 22px #8d6cff55;color:white;font-size:20px}
 .brand small{display:block;color:var(--muted);font-size:12px;font-weight:500;letter-spacing:0}
 .header-stats{color:var(--muted);font-size:14px}
@@ -322,7 +322,7 @@ body.player-open .toast{bottom:88px}
 <body>
 <div class="app">
 <header class="topbar">
-  <div class="brand"><span class="brand-mark" aria-hidden="true">♫</span><span>歌回索引<small>演唱片段與版本檢索</small></span></div>
+  <a id="brandHome" class="brand" href="./" aria-label="回到歌回索引首頁" title="回到首頁"><span class="brand-mark" aria-hidden="true">♫</span><span>歌回索引<small>演唱片段與版本檢索</small></span></a>
   <div class="top-search"><input id="searchInput" type="search" aria-label="搜尋歌曲、原唱、演唱者或歌回" placeholder="搜尋歌曲、專輯、歌手"></div>
   <div class="header-stats" id="headerStats"></div>
 </header>
@@ -481,6 +481,7 @@ function filterByArtist(value){artist.value=value;$("mobileArtistInput").value=v
 function filterByPerformer(value){performer.value=value;$("mobilePerformerInput").value=value;search.value="";$("mobileSearchInput").value="";stream.value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
 function filterByMonth(value){month.value=value;stream.value="";$("mobileMonthSelect").value=value;$("mobileStreamSelect").value="";recordFilterNavigation();render();}
 function selectStream(id){stream.value=id;$("mobileStreamSelect").value=id;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
+function returnHome(event){if(event)event.preventDefault();search.value="";performer.value="";artist.value="";month.value="";stream.value="";$("mobileSearchInput").value="";$("mobilePerformerInput").value="";$("mobileArtistInput").value="";$("mobileMonthSelect").value="";$("mobileStreamSelect").value="";pageSize=100;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
 function videoIdOf(url){const match=String(url||"").match(/[?&]v=([^&]+)/)||String(url||"").match(/youtu\.be\/([^?&]+)/);return match?match[1]:"";}
 function clipUrl(track){const id=track&&(track.videoId||videoIdOf(track.videoUrl));if(!id)return track&&(track.sourceCommentUrl||track.videoUrl)||"https://www.youtube.com";return "https://www.youtube.com/watch?v="+encodeURIComponent(id)+"&t="+Math.max(0,Math.floor(Number(track.startSeconds)||0))+"s";}
 function makeCover(videoId,className,altText,track){
@@ -723,7 +724,8 @@ $("mobilePerformerInput").addEventListener("input",function(){performer.value=th
 $("mobileArtistInput").addEventListener("input",function(){artist.value=this.value;recordTextFilterHistory();render();});
 $("mobileMonthSelect").addEventListener("change",function(){month.value=this.value;stream.value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();});
 $("mobileStreamSelect").addEventListener("change",function(){stream.value=this.value;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
-$("clearFilters").addEventListener("click",function(){search.value="";performer.value="";artist.value="";month.value="";stream.value="";$('mobileSearchInput').value="";$('mobilePerformerInput').value="";$('mobileArtistInput').value="";$('mobileMonthSelect').value="";$('mobileStreamSelect').value="";pageSize=100;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
+$("brandHome").addEventListener("click",returnHome);
+$("clearFilters").addEventListener("click",returnHome);
 window.addEventListener("popstate",function(event){restoreFilterHistory(event.state);});
 let recentSideInput=null;
 function sideHistoryAction(event){
