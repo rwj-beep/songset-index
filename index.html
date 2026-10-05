@@ -725,6 +725,24 @@ $("mobileMonthSelect").addEventListener("change",function(){month.value=this.val
 $("mobileStreamSelect").addEventListener("change",function(){stream.value=this.value;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 $("clearFilters").addEventListener("click",function(){search.value="";performer.value="";artist.value="";month.value="";stream.value="";$('mobileSearchInput').value="";$('mobilePerformerInput').value="";$('mobileArtistInput').value="";$('mobileMonthSelect').value="";$('mobileStreamSelect').value="";pageSize=100;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 window.addEventListener("popstate",function(event){restoreFilterHistory(event.state);});
+let pendingSideHistoryButton=0,pendingSideHistoryTimer=null;
+function handleSideHistoryButton(event){
+  if(event.button!==3&&event.button!==4)return;
+  event.preventDefault();
+  if(event.type==="auxclick"&&pendingSideHistoryButton===event.button)return;
+  if(event.type==="mousedown"){
+    pendingSideHistoryButton=event.button;
+    clearTimeout(pendingSideHistoryTimer);
+    pendingSideHistoryTimer=setTimeout(function(){pendingSideHistoryButton=0;pendingSideHistoryTimer=null;},500);
+  }else{
+    pendingSideHistoryButton=0;
+    clearTimeout(pendingSideHistoryTimer);
+    pendingSideHistoryTimer=null;
+  }
+  if(event.button===3)history.back();else history.forward();
+}
+window.addEventListener("mousedown",handleSideHistoryButton,{capture:true});
+window.addEventListener("auxclick",handleSideHistoryButton,{capture:true});
 
 $("pauseButton").addEventListener("click",function(){
   if(!playerReady||!player)return;
