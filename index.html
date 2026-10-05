@@ -725,24 +725,33 @@ $("mobileMonthSelect").addEventListener("change",function(){month.value=this.val
 $("mobileStreamSelect").addEventListener("change",function(){stream.value=this.value;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 $("clearFilters").addEventListener("click",function(){search.value="";performer.value="";artist.value="";month.value="";stream.value="";$('mobileSearchInput').value="";$('mobilePerformerInput').value="";$('mobileArtistInput').value="";$('mobileMonthSelect').value="";$('mobileStreamSelect').value="";pageSize=100;recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});});
 window.addEventListener("popstate",function(event){restoreFilterHistory(event.state);});
-let pendingSideHistoryButton=0,pendingSideHistoryTimer=null;
-function handleSideHistoryButton(event){
-  if(event.button!==3&&event.button!==4)return;
-  event.preventDefault();
-  if(event.type==="auxclick"&&pendingSideHistoryButton===event.button)return;
-  if(event.type==="mousedown"){
-    pendingSideHistoryButton=event.button;
-    clearTimeout(pendingSideHistoryTimer);
-    pendingSideHistoryTimer=setTimeout(function(){pendingSideHistoryButton=0;pendingSideHistoryTimer=null;},500);
-  }else{
-    pendingSideHistoryButton=0;
-    clearTimeout(pendingSideHistoryTimer);
-    pendingSideHistoryTimer=null;
+let recentSideInput=null;
+function sideHistoryAction(event){
+  if(event.type==="keydown"){
+    if(event.repeat)return "";
+    if(event.key==="BrowserBack")return "back";
+    if(event.key==="BrowserForward")return "forward";
+    return "";
   }
-  if(event.button===3)history.back();else history.forward();
+  if(event.button===3)return "back";
+  if(event.button===4)return "forward";
+  return "";
 }
-window.addEventListener("mousedown",handleSideHistoryButton,{capture:true});
-window.addEventListener("auxclick",handleSideHistoryButton,{capture:true});
+function handleSideHistoryInput(event){
+  const action=sideHistoryAction(event);
+  if(!action)return;
+  const now=Date.now(),previous=recentSideInput;
+  if(event.type==="auxclick"&&previous&&previous.action===action&&now-previous.at<1000){event.preventDefault();return;}
+  if((event.type==="mousedown"||event.type==="keydown")&&previous&&previous.action===action&&previous.source==="pointerdown"&&now-previous.at<120){event.preventDefault();return;}
+  event.preventDefault();
+  recentSideInput={action:action,source:event.type,at:now};
+  if(action==="back"){history.back();showToast("收到側鍵：返回上一個操作");}
+  else{history.forward();showToast("收到側鍵：前進到下一個操作");}
+}
+window.addEventListener("pointerdown",handleSideHistoryInput,{capture:true});
+window.addEventListener("mousedown",handleSideHistoryInput,{capture:true});
+window.addEventListener("auxclick",handleSideHistoryInput,{capture:true});
+window.addEventListener("keydown",handleSideHistoryInput,{capture:true});
 
 $("pauseButton").addEventListener("click",function(){
   if(!playerReady||!player)return;
