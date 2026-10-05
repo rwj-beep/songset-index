@@ -738,12 +738,12 @@ function handleSideButton(event){
   }
   if(handledSideButton!==event.button)return;
   if(event.type==="auxclick"){clearHandledSideButton();return;}
-  if(event.type==="mouseup"){
+  if(event.type==="mouseup"||event.type==="pointerup"){
     if(sideButtonResetTimer)clearTimeout(sideButtonResetTimer);
     sideButtonResetTimer=setTimeout(clearHandledSideButton,150);
   }
 }
-["pointerdown","mousedown","mouseup","auxclick"].forEach(function(type){window.addEventListener(type,handleSideButton,true);});
+["pointerdown","mousedown","pointerup","mouseup","auxclick"].forEach(function(type){window.addEventListener(type,handleSideButton,true);});
 $("pauseButton").addEventListener("click",function(){
   if(!playerReady||!player)return;
   if(!currentTrack){if(baseQueue.length)startQueue(baseQueue,baseQueue[0].key,shuffleOn);return;}
