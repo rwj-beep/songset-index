@@ -291,15 +291,17 @@ body.player-open .toast{bottom:510px}
 .dock-song .current-artwork{width:48px;height:48px;aspect-ratio:1;border:0;border-radius:2px;box-shadow:none}
 .dock-song .now-meta{min-width:0}
 .dock-song .now-title{font-size:13px;line-height:1.35}
-.dock-song .now-subtitle{font-size:11px;line-height:1.3;color:#aaa}
+.dock-song .now-subtitle{display:flex;align-items:center;gap:3px;min-width:0;overflow:hidden;color:#aaa;font-size:11px;line-height:1.3;white-space:nowrap}
 .dock-song .player-link{display:none}
-.dock-song .current-artwork,.dock-song .now-title,.dock-song .now-subtitle{color:inherit;text-decoration:none}
-.dock-song .now-title,.dock-song .now-subtitle{display:block}
+.dock-song .current-artwork{color:inherit;text-decoration:none}
+.dock-song button.now-title,.dock-filter-link{border:0;background:none;color:inherit;padding:0;font:inherit;cursor:pointer;text-align:left;text-decoration:none;white-space:nowrap}
+.dock-song button.now-title{font-size:13px;line-height:1.35}
 .dock-title-line{display:flex;align-items:center;gap:6px;min-width:0}
-.dock-title-line .now-title{flex:1;min-width:0}
+.dock-title-line .now-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.dock-filter-link:hover{color:#fff;text-decoration:underline;text-decoration-color:#ff0033}
+.dock-stream-link{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .dock-clip-link{width:20px;height:20px;font-size:12px}
-.dock-song .now-title:hover,.dock-song .now-subtitle:hover{color:#fff;text-decoration:underline;text-decoration-color:#ff0033}
-.dock-song .current-artwork:focus-visible,.dock-song .now-title:focus-visible,.dock-song .now-subtitle:focus-visible,.track-art-link:focus-visible,.clip-link:focus-visible{outline:2px solid #ff627e;outline-offset:3px}
+.dock-song .current-artwork:focus-visible,.dock-song .now-title:focus-visible,.dock-filter-link:focus-visible,.track-art-link:focus-visible,.clip-link:focus-visible{outline:2px solid #ff627e;outline-offset:3px}
 .dock-actions{justify-content:flex-end;gap:5px}
 .dock-actions #playerStatus{max-width:135px;overflow:hidden;color:#ddd;font-size:11px;text-overflow:ellipsis;white-space:nowrap}
 .dock-actions .queue-count{padding:0 8px;color:#aaa;font-size:11px;white-space:nowrap}
@@ -385,7 +387,7 @@ body.player-open .toast{bottom:88px}
     </div>
     <div class="dock-song">
       <a id="currentArtwork" class="current-artwork" target="_blank" rel="noopener noreferrer" aria-label="開啟歌曲原始影片片段"></a>
-      <div class="now-meta"><div class="dock-title-line"><a class="now-title" id="nowTitle" target="_blank" rel="noopener noreferrer">選擇一首歌開始播放</a><a class="clip-link dock-clip-link" id="dockClipLink" target="_blank" rel="noopener noreferrer" aria-label="開啟歌曲原始影片片段" title="開啟歌曲原始影片片段">↗</a></div><a class="now-subtitle" id="nowSubtitle" target="_blank" rel="noopener noreferrer"></a><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a></div>
+      <div class="now-meta"><div class="dock-title-line"><button class="now-title" id="nowTitle" type="button">選擇一首歌開始播放</button><a class="clip-link dock-clip-link" id="dockClipLink" target="_blank" rel="noopener noreferrer" aria-label="開啟歌曲原始影片片段" title="開啟歌曲原始影片片段">↗</a></div><div class="now-subtitle" id="nowSubtitle"></div><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a></div>
     </div>
     <div class="dock-actions"><span class="player-status-dot" aria-hidden="true"></span><span id="playerStatus">準備中</span><span class="queue-count" id="queueCount">播放清單尚未開始</span><div class="player-top-actions"><button id="queueToggle" aria-expanded="true">佇列</button><button id="miniToggle" aria-label="縮小播放器">縮小</button></div></div>
   </div>
@@ -477,6 +479,7 @@ function matchFilters(t,f){
 }
 function calcFiltered(){const f=currentFilters();return allTracks.filter(function(t){return matchFilters(t,f);});}
 function createButton(text,className,fn){const b=document.createElement("button");b.type="button";b.className=className;b.textContent=text;b.addEventListener("click",fn);return b;}
+function filterByTitle(value){search.value=value;$("mobileSearchInput").value=value;performer.value="";$("mobilePerformerInput").value="";artist.value="";$("mobileArtistInput").value="";month.value="";$("mobileMonthSelect").value="";stream.value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
 function filterByArtist(value){artist.value=value;$("mobileArtistInput").value=value;search.value="";$("mobileSearchInput").value="";stream.value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
 function filterByPerformer(value){performer.value=value;$("mobilePerformerInput").value=value;search.value="";$("mobileSearchInput").value="";stream.value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();window.scrollTo({top:0,behavior:"smooth"});}
 function filterByMonth(value){month.value=value;stream.value="";$("mobileMonthSelect").value=value;$("mobileStreamSelect").value="";recordFilterNavigation();render();}
@@ -537,7 +540,7 @@ function makeTrackRow(t,index){
   const clipLink=document.createElement("a");clipLink.className="clip-link";clipLink.href=clipUrl(t);clipLink.target="_blank";clipLink.rel="noopener noreferrer";clipLink.textContent="↗";clipLink.title="在 YouTube 開啟〈"+t.title+"〉原始片段";clipLink.setAttribute("aria-label","在 YouTube 開啟〈"+t.title+"〉原始片段");titleLine.append(title,clipLink);
   const num=titleCounts.get(normalize(t.title))||1;
   stack.appendChild(titleLine);
-  if(num>1){const versions=createButton(num+" 個版本","version-link",function(){search.value=t.title;performer.value="";artist.value="";month.value="";stream.value="";$("mobileSearchInput").value=t.title;$("mobilePerformerInput").value="";$("mobileArtistInput").value="";$("mobileMonthSelect").value="";$("mobileStreamSelect").value="";recordFilterNavigation();render();showToast("顯示〈"+t.title+"〉的 "+num+" 個演唱版本");});stack.appendChild(versions);}
+  if(num>1){const versions=createButton(num+" 個版本","version-link",function(){filterByTitle(t.title);showToast("顯示〈"+t.title+"〉的 "+num+" 個演唱版本");});stack.appendChild(versions);}
   const artistBtn=createButton("原唱 "+(t.artist||"未標註"),"artist-button",function(){filterByArtist(t.artist);$("mobileArtistInput").value=t.artist;});
   stack.appendChild(artistBtn);titleCell.append(coverLink,stack);
   const performerCell=document.createElement("div");performerCell.className="performer-cell";performerCell.appendChild(createButton(t.performer,"meta-button",function(){filterByPerformer(t.performer);$("mobilePerformerInput").value=t.performer;}));
@@ -618,16 +621,19 @@ function showPlayer(track){
   if(!compact)window.requestAnimationFrame(sizeYouTubePlayer);
   document.body.classList.add("player-open");
   $("nowTitle").textContent=track.title;
-  $("nowTitle").href=clipUrl(track);
-  $("nowTitle").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
+  $("nowTitle").setAttribute("aria-label","顯示〈"+track.title+"〉的演唱版本");
   $("dockClipLink").href=clipUrl(track);
   $("dockClipLink").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
   $("dockClipLink").title="在 YouTube 開啟〈"+track.title+"〉原始片段";
   $("currentArtwork").replaceChildren(makeCover(track.videoId,"player-cover",track.title+" 封面",track));
   $("currentArtwork").href=clipUrl(track);
   $("currentArtwork").setAttribute("aria-label","在 YouTube 開啟〈"+track.title+"〉原始片段");
-  $("nowSubtitle").textContent=track.performer+" · 原唱 "+track.artist+" · "+track.streamDate+" · "+track.streamTitle;
-  $("nowSubtitle").href=clipUrl(track);
+  const subtitle=$("nowSubtitle");subtitle.replaceChildren();
+  const performerLink=createButton(track.performer,"dock-filter-link",function(){filterByPerformer(track.performer);});performerLink.setAttribute("aria-label","篩選演唱者："+track.performer);
+  const originalLabel=createButton("原唱 "+track.artist,"dock-filter-link",function(){filterByArtist(track.artist);});originalLabel.setAttribute("aria-label","篩選原唱："+track.artist);
+  const dateLabel=document.createElement("span");dateLabel.textContent=track.streamDate;
+  const streamLink=createButton(track.streamTitle,"dock-filter-link dock-stream-link",function(){selectStream(track.setlistId);});streamLink.setAttribute("aria-label","顯示歌回場次："+track.streamDate+" · "+track.streamTitle);
+  subtitle.append(performerLink,document.createTextNode(" · "),originalLabel,document.createTextNode(" · "),dateLabel,document.createTextNode(" · "),streamLink);
   $("playerStatus").textContent="正在載入";
   $("sourceLink").href=track.sourceCommentUrl;
   $("queueCount").textContent=(queueIndex+1)+" / "+queue.length+" 首";
@@ -733,6 +739,7 @@ $("pauseButton").addEventListener("click",function(){
 });
 $("nextButton").addEventListener("click",function(){advance(true);});
 $("previousButton").addEventListener("click",previous);
+$("nowTitle").addEventListener("click",function(){if(!currentTrack)return;filterByTitle(currentTrack.title);showToast("顯示〈"+currentTrack.title+"〉的演唱版本");});
 $("shuffleToggle").addEventListener("click",function(){
   shuffleOn=!shuffleOn;
   if(queue.length&&queueIndex>=0){
