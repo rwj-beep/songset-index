@@ -202,6 +202,71 @@ body.player-open .toast{bottom:140px}
 .track-row{min-height:82px}
 @media(max-width:900px){.featured-stream{grid-template-columns:minmax(0,1fr) minmax(250px,.9fr)}.recent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.track-header{top:62px}}
 @media(max-width:680px){.featured-stream{grid-template-columns:1fr;min-height:0;border-radius:16px}.featured-art{order:-1;min-height:0;height:auto;aspect-ratio:16/9}.featured-copy{padding:17px}.feature-title{font-size:21px}.feature-actions{margin-top:15px}.recent-grid{grid-template-columns:repeat(4,minmax(142px,1fr));overflow-x:auto;padding:1px 1px 8px;scroll-snap-type:x mandatory}.recent-card{scroll-snap-align:start}.recent-cover{aspect-ratio:16/10}.track-header{position:static}.cover-fallback span{font-size:29px}}
+/* YouTube Music inspired now-playing view */
+.player-card{position:fixed;z-index:20;left:50%;right:auto;bottom:18px;transform:translateX(-50%);width:min(1450px,calc(100vw - 36px));height:min(480px,calc(100vh - 90px));max-height:calc(100vh - 24px);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:52px minmax(0,1fr);gap:0;padding:0;border:1px solid #ffffff22;border-radius:24px;background:linear-gradient(135deg,#181a28f5,#10131cf5 62%,#151720f5);box-shadow:0 26px 90px #000a;backdrop-filter:blur(26px)}
+.player-card[hidden]{display:none}
+.player-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 22px;border-bottom:1px solid #ffffff12;background:#ffffff04}
+.player-header-state,.player-top-actions{display:flex;align-items:center;gap:12px;min-width:0}
+.player-header-kicker{color:#b9a7ff;font-size:10px;font-weight:850;letter-spacing:.16em}
+.player-status-dot{width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:var(--active);box-shadow:0 0 12px #56e4c499}
+.player-header-state #playerStatus{color:#e7e6f3;font-size:12px;font-weight:700}
+.player-header-state #playerStatus{max-width:15em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.player-header-state .queue-count{padding-left:12px;border-left:1px solid #ffffff22;color:var(--muted);font-size:12px}
+.player-top-actions{position:static;flex:0 0 auto}
+.player-top-actions button{border:1px solid #ffffff1b;border-radius:18px;background:#ffffff08;padding:7px 13px;color:#e4e1f3;font-size:12px;font-weight:750;cursor:pointer}
+.player-top-actions button:hover{border-color:#b4a1ff88;background:#b4a1ff16}
+.player-layout{display:grid;grid-template-columns:minmax(210px,.78fr) minmax(320px,1.08fr) minmax(240px,.9fr);align-items:center;gap:clamp(16px,2.2vw,34px);min-height:0;padding:23px clamp(18px,2.6vw,38px);overflow:hidden}
+.player-art-panel{display:flex;min-width:0;height:100%;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px}
+.current-artwork{width:min(100%,260px);aspect-ratio:1;flex:0 0 auto;overflow:hidden;border:1px solid #ffffff24;border-radius:20px;background:#232433;box-shadow:0 20px 55px #0007}
+.current-artwork .player-cover{width:100%;height:100%;border-radius:inherit}
+.player-art-panel .now-meta{width:100%;min-width:0}
+.player-art-panel .now-title{overflow:hidden;display:-webkit-box;white-space:normal;text-overflow:ellipsis;font-size:clamp(19px,1.55vw,26px);line-height:1.28;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.player-art-panel .now-subtitle{margin-top:5px;white-space:normal;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.player-link{color:#8de8d1;font-size:12px;font-weight:700;text-decoration:none}
+.player-link:hover{text-decoration:underline}
+.player-main-panel{display:flex;min-width:0;flex-direction:column;align-items:stretch;justify-content:center;gap:18px}
+.yt-frame{width:min(100%,360px);min-width:200px;height:200px;min-height:200px;margin:0 auto;border:1px solid #ffffff1b;border-radius:16px;background:#07080c;overflow:hidden;box-shadow:0 14px 36px #0006}
+.player-main-panel .progress-wrap{display:flex;grid-column:auto;grid-row:auto;align-items:center;gap:10px;width:100%;padding:0;color:#aeb3c4;font-size:11px;font-variant-numeric:tabular-nums}
+.player-main-panel .progress-wrap input{flex:1;min-width:0;margin:0;padding:0;height:5px;border:0;background:#ffffff24;accent-color:#c0adff;cursor:pointer}
+.player-controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.player-controls .control-button{min-height:43px;border:1px solid #ffffff18;border-radius:24px;background:#ffffff0b;padding:0 14px;color:#e5e4ef;font-size:12px;font-weight:750;cursor:pointer;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+.player-controls .control-button:hover{transform:translateY(-1px);border-color:#baa9ff88;background:#ffffff14}
+.player-controls .play-control{min-width:88px;min-height:54px;border-color:#aa96ff;background:linear-gradient(135deg,#b09aff,#8169ee);box-shadow:0 8px 28px #8b73ff44;color:#fff;font-size:14px}
+.player-controls .play-control:hover{background:linear-gradient(135deg,#c0b0ff,#917bfa)}
+.player-controls .shuffle-control{color:#c2b3ff}
+.player-controls .shuffle-control.active{border-color:#75e3ca;background:#75e3ca;color:#08231d}
+.player-queue-panel{display:flex;min-width:0;height:100%;flex-direction:column;padding:15px;border:1px solid #ffffff12;border-radius:18px;background:linear-gradient(145deg,#ffffff08,#ffffff03)}
+.queue-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-bottom:11px}
+.queue-heading h2{margin:2px 0 0;font-size:17px;line-height:1.3}
+.queue-heading #queueRemaining{color:var(--soft);font-size:11px;white-space:nowrap}
+.queue-list{display:grid;gap:5px;min-height:0;overflow:auto;padding-right:3px;scrollbar-width:thin;scrollbar-color:#52576c transparent}
+.queue-item{display:grid;grid-template-columns:42px minmax(0,1fr) 22px;align-items:center;gap:9px;width:100%;min-height:50px;padding:4px 6px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--ink);text-align:left;cursor:pointer}
+.queue-item:hover{background:#ffffff0a}
+.queue-item.current{border-color:#a993ff4c;background:#a993ff15}
+.queue-cover{width:42px;height:42px;border-radius:8px}
+.queue-item-copy{min-width:0;display:grid;gap:1px}
+.queue-item-title,.queue-item-artist{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.queue-item-title{font-size:12px;font-weight:750}
+.queue-item-artist{color:var(--muted);font-size:10px}
+.queue-item-state{color:#8c80bb;font-size:12px;text-align:center}
+.track-cover{width:68px;height:68px;flex:0 0 68px;border-radius:13px;box-shadow:0 8px 20px #0003}
+.track-row{min-height:90px}
+body.player-open .main{padding-bottom:520px}
+body.player-open .sidebar{padding-bottom:500px}
+body.player-open .toast{bottom:510px}
+.player-card.compact{left:auto;right:16px;bottom:16px;transform:none;width:min(720px,calc(100vw - 32px));height:min(360px,calc(100vh - 32px));grid-template-columns:minmax(0,1fr);grid-template-rows:46px minmax(0,1fr);border-radius:21px}
+.player-card.compact .player-layout{grid-template-columns:145px minmax(0,1fr);gap:14px;padding:15px 18px}
+.player-card.compact .player-art-panel{gap:9px}
+.player-card.compact .current-artwork{width:120px;border-radius:15px}
+.player-card.compact .player-art-panel .now-title{font-size:16px}
+.player-card.compact .player-art-panel .now-subtitle,.player-card.compact .player-link,.player-card.compact .player-queue-panel{display:none}
+.player-card.compact .player-main-panel{gap:10px}
+.player-card.compact .yt-frame{width:200px;height:200px}
+.player-card.queue-collapsed:not(.compact) .player-layout{grid-template-columns:minmax(220px,.8fr) minmax(320px,1.08fr)}
+.player-card.queue-collapsed:not(.compact) .player-queue-panel{display:none}
+@media(max-width:1120px){.player-card{height:min(440px,calc(100vh - 90px))}.player-layout{grid-template-columns:minmax(160px,.65fr) minmax(280px,1fr);gap:22px}.player-queue-panel{display:none}.player-card.queue-open .player-queue-panel{display:flex;position:absolute;z-index:2;right:16px;top:62px;bottom:16px;width:min(310px,40vw);background:#171925f5;box-shadow:0 15px 42px #0008}body.player-open .main{padding-bottom:480px}body.player-open .sidebar{padding-bottom:460px}}
+@media(max-width:680px){.track-cover{width:52px;height:52px;flex:0 0 52px}.track-row{min-height:78px}.player-card{left:0;right:0;bottom:0;transform:none;width:100%;height:min(620px,88vh);max-height:calc(100vh - 58px);border-radius:22px 22px 0 0}.player-header{height:48px;padding:0 14px}.player-header-state{gap:8px}.player-header-kicker{font-size:9px}.player-header-state #playerStatus,.player-header-state .queue-count{font-size:10px}.player-header-state .queue-count{padding-left:8px}.player-top-actions{gap:6px}.player-top-actions button{padding:6px 9px;font-size:11px}.player-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:12px;padding:12px 13px 16px;overflow-y:auto;align-content:start}.player-art-panel{display:grid;grid-template-columns:94px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;height:auto}.current-artwork{grid-column:1;grid-row:1/3;width:94px;border-radius:14px}.player-art-panel .now-meta{grid-column:2;grid-row:1;align-self:end}.player-art-panel .now-title{font-size:17px}.player-art-panel .now-subtitle{font-size:11px}.player-art-panel .player-link{grid-column:2;grid-row:2;align-self:start;font-size:10px}.player-main-panel{display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:center;gap:9px}.yt-frame{grid-column:1;grid-row:1/3;width:200px;height:200px;min-width:200px;min-height:200px;border-radius:13px}.player-main-panel .progress-wrap{grid-column:2;grid-row:1;flex-wrap:wrap;gap:5px;font-size:10px}.player-main-panel .progress-wrap input{flex-basis:100%;order:2}.player-controls{grid-column:2;grid-row:2;gap:5px}.player-controls .control-button{min-height:38px;padding:0 8px;font-size:10px}.player-controls .play-control{min-width:62px;min-height:46px;font-size:11px}.player-queue-panel{display:none;position:static;width:auto;height:auto;max-height:220px;padding:11px}.player-card.queue-open .player-queue-panel{display:flex;grid-column:1;grid-row:3}.player-card.queue-open .player-layout{overflow-y:auto}.player-card.compact{left:0;right:0;bottom:0;width:100%;height:min(540px,83vh);max-height:calc(100vh - 58px);border-radius:22px 22px 0 0}.player-card.compact .player-layout{grid-template-columns:minmax(0,1fr);gap:10px;padding:12px}.player-card.compact .player-art-panel{display:grid;grid-template-columns:80px minmax(0,1fr);height:auto}.player-card.compact .current-artwork{width:80px}.player-card.compact .player-main-panel{display:grid;grid-template-columns:200px minmax(0,1fr)}.player-card.compact .player-queue-panel{display:none}.player-card.compact.queue-open .player-queue-panel{display:flex}body.player-open .main{padding-bottom:620px}body.player-open .sidebar{padding-bottom:600px}body.player-open .toast{bottom:620px}}
+@media(max-width:680px){.player-card.queue-open .player-queue-panel,.player-card.compact.queue-open .player-queue-panel{position:static;right:auto;top:auto;bottom:auto;width:auto}}
 </style>
 </head>
 <body>
@@ -249,10 +314,32 @@ body.player-open .toast{bottom:140px}
   </main>
 </div>
 </div>
-<section id="playerCard" class="player-card" hidden aria-label="迷你播放器">
-  <div class="player-top"><div class="now-meta"><div class="player-kicker" id="playerStatus">準備中</div><div class="now-title" id="nowTitle">選擇一首歌開始播放</div><div class="now-subtitle" id="nowSubtitle"></div></div><div class="player-top-actions"><button id="miniToggle" aria-label="縮小播放器">縮小</button></div></div>
-  <div class="player-body"><div id="ytPlayer" class="yt-frame"></div><div class="player-side"><div class="queue-count" id="queueCount">播放清單尚未開始</div><div class="player-controls"><button class="control-button" id="previousButton" aria-label="上一首">上一首</button><button class="control-button" id="pauseButton" aria-label="暫停播放">暫停</button><button class="control-button" id="nextButton" aria-label="下一首">下一首</button><button class="control-button" id="shuffleToggle" aria-pressed="false">隨機</button></div><a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸</a></div></div>
-  <div class="progress-wrap"><span id="elapsed">0:00</span><input id="progress" type="range" min="0" max="100" value="0" aria-label="歌曲播放進度"><span id="duration">0:00</span></div>
+<section id="playerCard" class="player-card" hidden aria-label="正在播放">
+  <header class="player-header">
+    <div class="player-header-state"><span class="player-header-kicker">NOW PLAYING</span><span class="player-status-dot" aria-hidden="true"></span><span id="playerStatus">準備中</span><span class="queue-count" id="queueCount">播放清單尚未開始</span></div>
+    <div class="player-top-actions"><button id="queueToggle" aria-expanded="true">佇列</button><button id="miniToggle" aria-label="縮小播放器">縮小</button></div>
+  </header>
+  <div class="player-layout">
+    <div class="player-art-panel">
+      <div id="currentArtwork" class="current-artwork" aria-hidden="true"></div>
+      <div class="now-meta"><div class="now-title" id="nowTitle">選擇一首歌開始播放</div><div class="now-subtitle" id="nowSubtitle"></div></div>
+      <a id="sourceLink" class="player-link" target="_blank" rel="noopener noreferrer">開啟原留言時間軸 ↗</a>
+    </div>
+    <div class="player-main-panel">
+      <div class="yt-frame" id="ytPlayer" aria-label="YouTube 影片播放器"></div>
+      <div class="progress-wrap"><span id="elapsed">0:00</span><input id="progress" type="range" min="0" max="100" value="0" aria-label="歌曲播放進度"><span id="duration">0:00</span></div>
+      <div class="player-controls">
+        <button class="control-button shuffle-control" id="shuffleToggle" aria-pressed="false" aria-label="隨機播放">隨機</button>
+        <button class="control-button" id="previousButton" aria-label="上一首">上一首</button>
+        <button class="control-button play-control" id="pauseButton" aria-label="暫停播放">暫停</button>
+        <button class="control-button" id="nextButton" aria-label="下一首">下一首</button>
+      </div>
+    </div>
+    <aside class="player-queue-panel" aria-label="接下來播放">
+      <div class="queue-heading"><div><span class="player-header-kicker">UP NEXT</span><h2>接下來播放</h2></div><span id="queueRemaining"></span></div>
+      <div class="queue-list" id="queueList"></div>
+    </aside>
+  </div>
 </section>
 <div class="toast" id="toast" role="status"></div><script src="./catalog.js?v=2023-07-15"></script>
   <script src="./cocoa-2022-01.js?v=2022-01-14"></script>
@@ -277,6 +364,10 @@ setlists.forEach(function(st){
 });
 allTracks.sort(function(a,b){return a.streamDate.localeCompare(b.streamDate)||a.position-b.position;});
 function normalize(x){return String(x||"").trim().toLocaleLowerCase();}
+const artworkBySong=new Map([
+  ["king gnu|sorrows","https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b4/58/4d/b4584d3a-4c82-ba50-9856-8fd7028f4029/jacket_BVCL00930B00Z_550.jpg/600x600bb.jpg"]
+]);
+function songArtwork(track){return track?artworkBySong.get(normalize(track.artist)+"|"+normalize(track.title))||"":"";}
 function fmt(sec){sec=Math.max(0,Math.floor(Number(sec)||0));const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h? h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"):m+":"+String(s).padStart(2,"0");}
 function monthOf(date){return String(date||"").slice(0,7);}
 function monthName(value){const p=value.split("-");return p.length===2?p[0]+" 年 "+Number(p[1])+" 月":value;}
@@ -311,15 +402,34 @@ function filterByPerformer(value){performer.value=value;$("mobilePerformerInput"
 function filterByMonth(value){month.value=value;stream.value="";$("mobileMonthSelect").value=value;$("mobileStreamSelect").value="";render();}
 function selectStream(id){stream.value=id;$("mobileStreamSelect").value=id;render();window.scrollTo({top:0,behavior:"smooth"});}
 function videoIdOf(url){const match=String(url||"").match(/[?&]v=([^&]+)/)||String(url||"").match(/youtu\.be\/([^?&]+)/);return match?match[1]:"";}
-function makeCover(videoId,className,altText){
+function makeCover(videoId,className,altText,track){
   const frame=document.createElement("div");frame.className="cover-frame "+className;
   const fallback=document.createElement("div");fallback.className="cover-fallback";fallback.setAttribute("aria-hidden","true");
   const note=document.createElement("span");note.textContent="♫";const label=document.createElement("small");label.textContent="歌回影片預覽";fallback.append(note,label);frame.appendChild(fallback);
-  if(!videoId)return frame;
+  const trackArtwork=songArtwork(track);
+  if(!videoId&&!trackArtwork)return frame;
   const img=document.createElement("img");img.className="cover-image";img.alt=altText||"";img.loading="lazy";img.decoding="async";
   const encodedId=encodeURIComponent(videoId);
-  const sources=["https://img.youtube.com/vi/"+encodedId+"/hqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/mqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/0.jpg"];
+  const sources=(trackArtwork?[trackArtwork]:[]).concat(videoId?["https://img.youtube.com/vi/"+encodedId+"/hqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/mqdefault.jpg","https://img.youtube.com/vi/"+encodedId+"/0.jpg"]:[]);
   let sourceIndex=0;img.onload=function(){frame.classList.add("loaded");};img.onerror=function(){sourceIndex++;if(sourceIndex<sources.length){img.src=sources[sourceIndex];}else{img.remove();}};frame.appendChild(img);img.src=sources[sourceIndex];if(img.complete&&img.naturalWidth)frame.classList.add("loaded");return frame;
+}
+function renderQueue(){
+  const root=$("queueList");if(!root)return;root.replaceChildren();
+  if(!queue.length||queueIndex<0){$("queueRemaining").textContent=queue.length?"已播放完":"尚無曲目";return;}
+  const remaining=Math.max(0,queue.length-queueIndex-1);
+  $("queueRemaining").textContent=remaining?"還有 "+remaining.toLocaleString()+" 首":"最後一首";
+  queue.slice(queueIndex,queueIndex+12).forEach(function(track,offset){
+    const absoluteIndex=queueIndex+offset;
+    const current=absoluteIndex===queueIndex;
+    const row=createButton("","queue-item"+(current?" current":""),function(){if(current)return;queueIndex=absoluteIndex;loadCurrent();});
+    row.setAttribute("aria-label",(current?"正在播放：":"播放：")+track.title+"／"+track.artist);
+    row.appendChild(makeCover(track.videoId,"queue-cover",track.title+" 封面",track));
+    const copy=document.createElement("span");copy.className="queue-item-copy";
+    const title=document.createElement("span");title.className="queue-item-title";title.textContent=track.title;
+    const artist=document.createElement("span");artist.className="queue-item-artist";artist.textContent=track.artist+" · "+track.performer;
+    copy.append(title,artist);row.appendChild(copy);
+    const state=document.createElement("span");state.className="queue-item-state";state.textContent=current?"♫":String(absoluteIndex+1);row.appendChild(state);root.appendChild(row);
+  });
 }
 function renderFeatured(st,filteredSetlists){
   const root=$("featuredStream");root.replaceChildren();if(!st)return;
@@ -349,7 +459,7 @@ function makeTrackRow(t,index){
   const row=document.createElement("article");row.className="track-row"+(currentTrack&&currentTrack.key===t.key?" current":"");row.dataset.trackKey=t.key;
   const idx=document.createElement("div");idx.className="index-cell";idx.textContent=String(index+1).padStart(2,"0");
   const titleCell=document.createElement("div");titleCell.className="title-cell";
-  const cover=makeCover(t.videoId,"track-cover",t.streamTitle+" 封面");
+  const cover=makeCover(t.videoId,"track-cover",t.title+" 封面",t);
   const stack=document.createElement("div");stack.className="title-stack";
   const title=createButton(t.title,"title-button",function(){playDirect(t);});
   const num=titleCounts.get(normalize(t.title))||1;
@@ -407,7 +517,7 @@ function render(){
   renderFeatured(featuredStream,labels.length>0&&matchingSetlists.length>0);
   renderRecentStreams(matchingSetlists.length?matchingSetlists:sortedStreams,selectedStream&&selectedStream.id);
 }
-function setShuffleVisual(){const b=$("shuffleToggle");b.classList.toggle("active",shuffleOn);b.setAttribute("aria-pressed",shuffleOn?"true":"false");$("shuffleAll").classList.toggle("active",shuffleOn);}
+function setShuffleVisual(){const b=$("shuffleToggle");b.classList.toggle("active",shuffleOn);b.setAttribute("aria-pressed",shuffleOn?"true":"false");$("shuffleAll").classList.toggle("active",shuffleOn);renderQueue();}
 function shuffleArray(items){const result=items.slice();for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=result[i];result[i]=result[j];result[j]=tmp;}return result;}
 function shuffleWithFirst(items,key){const first=items.find(function(t){return t.key===key;});const rest=items.filter(function(t){return t.key!==key;});return first?[first].concat(shuffleArray(rest)):shuffleArray(items);}
 // Ignore the previous clip's reported time until YouTube lands on the new seek target.
@@ -432,13 +542,15 @@ function refreshCurrentTrackButton(){
 function showPlayer(track){
   autoplayBlocked=false;
   playerCard.hidden=false;
-  sizeYouTubePlayer();
+  window.requestAnimationFrame(sizeYouTubePlayer);
   document.body.classList.add("player-open");
   $("nowTitle").textContent=track.title;
+  $("currentArtwork").replaceChildren(makeCover(track.videoId,"player-cover",track.title+" 封面",track));
   $("nowSubtitle").textContent=track.performer+" · 原唱 "+track.artist+" · "+track.streamDate+" · "+track.streamTitle;
   $("playerStatus").textContent="正在載入";
   $("sourceLink").href=track.sourceCommentUrl;
   $("queueCount").textContent=(queueIndex+1)+" / "+queue.length+" 首";
+  renderQueue();
   $("elapsed").textContent=fmt(0);
   $("duration").textContent=fmt(Math.max(0,track.endSeconds-track.startSeconds));
   $("progress").max=Math.max(1,track.endSeconds-track.startSeconds);
@@ -473,10 +585,13 @@ function finishQueue(){
   advancing=false;segmentReady=false;
   currentTrack=null;queueIndex=-1;pendingTrack=null;
   if(player&&playerReady){player.pauseVideo();}
-  $("playerStatus").textContent="播放清單已播完";$("queueCount").textContent="目前清單已播放完畢";$("pauseButton").textContent="重播";$("pauseButton").setAttribute("aria-label","重播播放清單");render();
+  $("playerStatus").textContent="播放清單已播完";$("queueCount").textContent="目前清單已播放完畢";$("pauseButton").textContent="重播";$("pauseButton").setAttribute("aria-label","重播播放清單");renderQueue();render();
 }
 function startQueue(items,startKey,randomized){
   if(!items.length){showToast("目前篩選沒有歌曲");return;}
+  playerCard.classList.remove("compact","queue-open","queue-collapsed");
+  $("miniToggle").textContent="縮小";$("miniToggle").setAttribute("aria-label","縮小播放器");
+  $("queueToggle").setAttribute("aria-expanded",window.matchMedia("(max-width: 1120px)").matches?"false":"true");
   baseQueue=items.slice();
   shuffleOn=!!randomized;
   queue=shuffleOn?shuffleWithFirst(baseQueue,startKey||baseQueue[0].key):baseQueue.slice();
@@ -543,7 +658,13 @@ $("shuffleToggle").addEventListener("click",function(){
   }
   setShuffleVisual();
 });
-$("miniToggle").addEventListener("click",function(){const c=playerCard.classList.toggle("compact");this.textContent=c?"還原":"縮小";this.setAttribute("aria-label",c?"還原播放器":"縮小播放器");});
+$("miniToggle").addEventListener("click",function(){const c=playerCard.classList.toggle("compact");this.textContent=c?"放大":"縮小";this.setAttribute("aria-label",c?"放大播放器":"縮小播放器");window.requestAnimationFrame(sizeYouTubePlayer);});
+$("queueToggle").addEventListener("click",function(){
+  const narrow=window.matchMedia("(max-width: 1120px)").matches;
+  const activeClass=narrow?"queue-open":"queue-collapsed";
+  const open=playerCard.classList.toggle(activeClass);
+  this.setAttribute("aria-expanded",narrow?(open?"true":"false"):(open?"false":"true"));
+});
 $("progress").addEventListener("input",function(){if(playerReady&&player&&currentTrack)player.seekTo(currentTrack.startSeconds+Number(this.value),true);});
 function updateProgress(){
   if(!playerReady||!player||!currentTrack)return;
